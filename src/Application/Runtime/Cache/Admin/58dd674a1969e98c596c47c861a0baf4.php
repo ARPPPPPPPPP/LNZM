@@ -98,7 +98,7 @@
 									<td><?php echo ($itemAcademy[academyname]); ?></td>
 									<td><?php echo ($itemAcademy[academydescription]); ?></td>
 									<td><a
-										href="<?php echo U('WorkTendency/editWorkTendency','worktendencyid=' . $item[worktendencyid]);?>"
+										href="<?php echo U('SystemSetting/editAcademy','academyid=' . $itemAcademy[academyid]);?>"
 										title="Edit" target="_blank"><img
 											src="/LNZM/Public/resources/images/icons/pencil.png" alt="编辑" /></a>
 										<a
@@ -166,25 +166,25 @@
 								<tr>
 									<td colspan="4">
 										<div class="bulk-actions align-left">
-											<a class="button" onclick="deleteMulti()">删除选中</a>
+											<a class="button" onclick="deleteBranchMulti()">删除选中</a>
 										</div>
-										<div class="pagination"><?php echo ($page); ?></div> <!-- End .pagination -->
+										<div class="pagination"><?php echo ($pageBranch); ?></div> <!-- End .pagination -->
 										<div class="clear"></div>
 									</td>
 								</tr>
 							</tfoot>
 							<tbody>
-								<?php if(is_array($list)): foreach($list as $key=>$item): ?><tr>
-									<td><input type="checkbox" name='checkboxscut'
-										id='<?php echo ($item[academyid]); ?>' /></td>
-									<td><?php echo ($item[academyname]); ?></td>
-									<td><?php echo ($item[academydescription]); ?></td>
+								<?php if(is_array($listBranch)): foreach($listBranch as $key=>$itemBranch): ?><tr>
+									<td><input type="checkbox" name='checkboxbranch'
+										id='<?php echo ($itemBranch[branchid]); ?>' /></td>
+									<td><?php echo ($itemBranch[branchname]); ?></td>
+									<td><?php echo ($itemBranch[branchacademy]); ?></td>
 									<td><a
-										href="<?php echo U('WorkTendency/editWorkTendency','worktendencyid=' . $item[worktendencyid]);?>"
+										href="<?php echo U('SystemSetting/editBranch','branchid=' . $itemBranch[branchid]);?>"
 										title="Edit" target="_blank"><img
 											src="/LNZM/Public/resources/images/icons/pencil.png" alt="编辑" /></a>
 										<a
-										href="<?php echo U('WorkTendency/allPage','delete=' . $item[worktendencyid]);?>"
+										href="<?php echo U('SystemSetting/organizationSystemSetting','deleteBranch=' . $itemBranch[branchid]);?>"
 										title="Delete"><img
 											src="/LNZM/Public/resources/images/icons/cross.png"
 											onclick="javascript:return confirm('确定要删除吗?');" alt="删除" /></a></td>
@@ -195,7 +195,7 @@
 					</div>
 					<!-- End #tab3 -->
 					<div class="tab-content" id="tab4">
-						<form action="<?php echo U('WorkTendency/addWorkTendency');?>" method="post">
+						<form action="<?php echo U('SystemSetting/addBranch');?>" method="post">
 							<fieldset>
 								<!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<p>
@@ -211,7 +211,7 @@
 								<p>
 									<label>学院</label> <select name="branchAcademy"
 										class="small-input">
-										<option value="option1">Send to...</option>
+										<?php if(is_array($listAcademy)): foreach($listAcademy as $key=>$itemAcademy): ?><option value="<?php echo ($itemAcademy[academyid]); ?>"><?php echo ($itemAcademy[academyname]); ?></option><?php endforeach; endif; ?>
 									</select> <br />
 								</p>
 								<p>
@@ -241,6 +241,20 @@
 			}
 			//alert(value.toString());
 			window.location = "<?php echo U('SystemSetting/organizationSystemSetting','deleteAcademyMulti=-1');?>"
+					+ "," + value.toString();
+		}
+	}
+	
+	function deleteBranchMulti() {
+		if (confirm('确定要删除吗?')) {
+			var id = document.getElementsByName('checkboxbranch');
+			var value = new Array();
+			for (var i = 0; i < id.length; i++) {
+				if (id[i].checked)
+					value.push(id[i].id);
+			}
+			//alert(value.toString());
+			window.location = "<?php echo U('SystemSetting/organizationSystemSetting','deleteBranchMulti=-1');?>"
 					+ "," + value.toString();
 		}
 	}

@@ -99,7 +99,7 @@
 									<td>{$itemAcademy[academyname]}</td>
 									<td>{$itemAcademy[academydescription]}</td>
 									<td><a
-										href="{:U('WorkTendency/editWorkTendency','worktendencyid=' . $item[worktendencyid])}"
+										href="{:U('SystemSetting/editAcademy','academyid=' . $itemAcademy[academyid])}"
 										title="Edit" target="_blank"><img
 											src="__PUBLIC__/resources/images/icons/pencil.png" alt="编辑" /></a>
 										<a
@@ -168,26 +168,26 @@
 								<tr>
 									<td colspan="4">
 										<div class="bulk-actions align-left">
-											<a class="button" onclick="deleteMulti()">删除选中</a>
+											<a class="button" onclick="deleteBranchMulti()">删除选中</a>
 										</div>
-										<div class="pagination">{$page}</div> <!-- End .pagination -->
+										<div class="pagination">{$pageBranch}</div> <!-- End .pagination -->
 										<div class="clear"></div>
 									</td>
 								</tr>
 							</tfoot>
 							<tbody>
-								<foreach name="list" item="item">
+								<foreach name="listBranch" item="itemBranch">
 								<tr>
-									<td><input type="checkbox" name='checkboxscut'
-										id='{$item[academyid]}' /></td>
-									<td>{$item[academyname]}</td>
-									<td>{$item[academydescription]}</td>
+									<td><input type="checkbox" name='checkboxbranch'
+										id='{$itemBranch[branchid]}' /></td>
+									<td>{$itemBranch[branchname]}</td>
+									<td>{$itemBranch[branchacademy]}</td>
 									<td><a
-										href="{:U('WorkTendency/editWorkTendency','worktendencyid=' . $item[worktendencyid])}"
+										href="{:U('SystemSetting/editBranch','branchid=' . $itemBranch[branchid])}"
 										title="Edit" target="_blank"><img
 											src="__PUBLIC__/resources/images/icons/pencil.png" alt="编辑" /></a>
 										<a
-										href="{:U('WorkTendency/allPage','delete=' . $item[worktendencyid])}"
+										href="{:U('SystemSetting/organizationSystemSetting','deleteBranch=' . $itemBranch[branchid])}"
 										title="Delete"><img
 											src="__PUBLIC__/resources/images/icons/cross.png"
 											onclick="javascript:return confirm('确定要删除吗?');" alt="删除" /></a></td>
@@ -199,7 +199,7 @@
 					</div>
 					<!-- End #tab3 -->
 					<div class="tab-content" id="tab4">
-						<form action="{:U('WorkTendency/addWorkTendency')}" method="post">
+						<form action="{:U('SystemSetting/addBranch')}" method="post">
 							<fieldset>
 								<!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<p>
@@ -215,7 +215,9 @@
 								<p>
 									<label>学院</label> <select name="branchAcademy"
 										class="small-input">
-										<option value="option1">Send to...</option>
+										<foreach name="listAcademy" item="itemAcademy">
+										<option value="{$itemAcademy[academyid]}">{$itemAcademy[academyname]}</option>
+										</foreach>
 									</select> <br />
 								</p>
 								<p>
@@ -245,6 +247,20 @@
 			}
 			//alert(value.toString());
 			window.location = "{:U('SystemSetting/organizationSystemSetting','deleteAcademyMulti=-1')}"
+					+ "," + value.toString();
+		}
+	}
+	
+	function deleteBranchMulti() {
+		if (confirm('确定要删除吗?')) {
+			var id = document.getElementsByName('checkboxbranch');
+			var value = new Array();
+			for (var i = 0; i < id.length; i++) {
+				if (id[i].checked)
+					value.push(id[i].id);
+			}
+			//alert(value.toString());
+			window.location = "{:U('SystemSetting/organizationSystemSetting','deleteBranchMulti=-1')}"
 					+ "," + value.toString();
 		}
 	}

@@ -39,13 +39,13 @@ class Page{
      * @param array $listRows  每页显示记录数
      * @param array $parameter  分页跳转的参数
      */
-    public function __construct($totalRows, $listRows=20, $parameter = array()) {
+    public function __construct($totalRows, $listRows=20,$pTemp, $parameter = array()) {
         C('VAR_PAGE') && $this->p = C('VAR_PAGE'); //设置分页参数名称
         /* 基础设置 */
         $this->totalRows  = $totalRows; //设置总记录数
         $this->listRows   = $listRows;  //设置每页显示行数
         $this->parameter  = empty($parameter) ? $_GET : $parameter;
-        $this->nowPage    = empty($_GET[$this->p]) ? 1 : intval($_GET[$this->p]);
+        $this->nowPage    = empty($_GET[$pTemp]) ? 1 : intval($_GET[$pTemp]);
         $this->nowPage    = $this->nowPage>0 ? $this->nowPage : 1;
         $this->firstRow   = $this->listRows * ($this->nowPage - 1);
     }
@@ -59,6 +59,15 @@ class Page{
         if(isset($this->config[$name])) {
             $this->config[$name] = $value;
         }
+    }
+    
+    /**
+     * Ai
+     */
+    public function setP($pTemp) {
+    	if(isset($this->p)) {
+    		$this->p = $pTemp;
+    	}
     }
 
     /**

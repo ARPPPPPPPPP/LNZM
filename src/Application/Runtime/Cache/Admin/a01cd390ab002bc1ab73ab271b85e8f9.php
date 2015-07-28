@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo session('userAccount');?>系统后台</title>
+<title><?php echo ($APPLICATION_NAME); ?>系统后台</title>
 <!--                       CSS                       -->
 <!-- Reset Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/LNZM/Public/resources/css/reset.css" />

@@ -8,7 +8,8 @@
 	<load href="__PUBLIC__/res/js/jquery-1.11.3.min.js" />
 </head>
 <body>
-
+<!--引入头部-->
+<include file="Layout/header"/>
 <!--大图区-->
 <div id="bgPic" class="comWidth">
 	<a href="">
@@ -47,7 +48,6 @@
 			</div>
 			<div class="info_body">
 				<ul>
-					<foreach name="listWorkTendency" ></foreach>
 					<li><a href="">链接</a></li>
 					<li><a href="">链接</a></li>
 					<li><a href="">链接</a></li>
@@ -161,12 +161,8 @@
 </div>
 <!--END-->
 
-<!--底部-->
-<div id="footer" class="comWidth">
-	<p>2015 © 华南理工大学 版权所有  地址：广州市天河区五山路381号/广州市番禺区广州大学城邮政编码：510641/510006</p>
-	<p>查号台：87110228-3 网上查号招生咨询：87110737 网站设计、管理：岭南追梦小组</p>
-</div>
-<!--END-->
+<!--引入底部文件-->
+<include file="Layout/footer"/>
 
 <script src="__PUBLIC__/res//js/index.js"></script>
 </body>

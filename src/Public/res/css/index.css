@@ -1,0 +1,136 @@
+
+
+/*图片轮播区*/
+#bgPic{
+    margin-top: 8px;
+    position: relative;
+    height:300px;
+    overflow: hidden;
+}
+#bgPic a{
+    position: absolute;
+}
+
+#smallDiv{
+    position: absolute;
+    top:250px;
+    right:50px;
+}
+#smallDiv ul li{
+    display: block;
+    float: left;
+    width: 25px;
+    height: 25px;
+    background-color: #FFFFFF;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 25px;
+    color: #F14700;
+    font-size: 15px;
+    font-weight: 700;
+}
+#smallDiv ul li:hover{
+    cursor: pointer;
+}
+#smallDiv ul .active{
+    background-color: #ed1941;
+    color:#FFFFFF;
+
+}
+/*内容区*/
+#content{
+    margin-top: 5px;
+    height:458px;
+    overflow: hidden;
+}
+#area-1{
+    width:640px;
+    height:458px;
+}
+.area{
+    margin-top: 10px;
+    width: 315px;
+    height:214px;
+    margin-right:5px;
+
+
+}
+
+.info_title{
+    display: block;
+    height:30px;
+    color: #FFFFFF;
+    font-size: 17px;
+    font-weight: 300;
+    text-indent: 10px;
+    line-height: 30px;
+    background: url(../img/area-title.png) no-repeat;
+}
+.info_title span{
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.info_body{
+    width: 100%;
+    height:184px;
+    background: url(../img/area-body.png) no-repeat;
+}
+.info_body a{
+    background: url(../img/q.gif) no-repeat 4px 7px;
+    text-indent:15px;
+    font-size: 13px;
+    display: block;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.info_body a:hover{
+    text-decoration: underline;
+    color:#ed1941;
+}
+#area-2{
+    width:320px;
+    height:458px;
+    background:url(../img/bg_block.png) no-repeat;
+    margin:10px auto;
+}
+
+#area-2 a{
+    display: block;
+    position: relative;
+    margin:5px auto;
+}
+.small_bar_pic a{
+
+    width: 300px;
+    height: 105px;
+}
+.small_bar_pic a img{
+    width: 300px;
+    height: 105px;
+}
+.small_block_pic a{
+    width: 146px;
+    height: 105px;
+}
+.small_block_pic a img{
+    width: 146px;
+    height: 105px;
+}
+#area-2 .bar{
+    position: absolute;
+    width: 100%;
+    height:40px;
+    background-color: #000000;
+    top:65px;
+    opacity: 0.7;
+    filter:alpha(opacity=70);
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+}

@@ -1,0 +1,36 @@
+
+/*内容区*/
+#content{
+    min-height: 400px;
+    margin-top: 20px;
+}
+
+.zw_head{
+    height:40px;
+    line-height: 40px;
+    color:#FFFFFF;
+    text-indent: 10px;
+    font-size: 15px;
+}
+.back{
+    display: block;
+    margin-top: 10px;
+    width:50px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 15px;
+    color:#FFFFFF;
+    text-align: center;
+    background-color: #C5130A;
+    margin-right: 30px;
+}
+.back:hover{
+    cursor: pointer;
+}
+.zw_body{
+    min-height: 360px;
+    height: auto;
+    margin-top: 5px;
+    background-color: #C5130A;
+
+}

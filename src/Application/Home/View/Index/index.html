@@ -44,16 +44,15 @@
 		<div class="area left">
 			<div class="info_title">
 				<b class="left">工作动态</b>
-				<a href=""><span class="right">更多>></span></a>
+				<a href="{:U('WorkTendency/showList')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
 				<ul>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
+					<foreach name="listWorkTendency" item="item">
+						<li>
+							<a href="{:U('WorkTendency/showContent','worktendencyid=' . $item[worktendencyid])}">{$item[worktendencytitle]}</a>
+						</li>
+					</foreach>
 				</ul>
 			</div>
 		</div>
@@ -164,6 +163,6 @@
 <!--引入底部文件-->
 <include file="Layout/footer"/>
 
-<script src="__PUBLIC__/res//js/index.js"></script>
+<load href="__PUBLIC__/res/js/index.js" />
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作状态列表页</title>
+    <load href="__PUBLIC__/res/css/global.css" />
+    <load href="__PUBLIC__/res/css/list.css" />
+    <load href="__PUBLIC__/res/js/jquery-1.11.3.min.js"/>
+</head>
+<body>
+<!--引入头部-->
+<include file="Layout/header"/>
+
+<!--内容区-->
+<div id="content" class="comWidth">
+    <div class="list_title">
+        工作动态
+    </div>
+    <div class="list_body">
+        <ul>
+            <foreach name="listWorkTendency" item="item">
+                <a href="{:U('WorkTendency/showContent','worktendencyid=' . $item[worktendencyid])}">{$item[worktendencytitle]}</a>
+            </foreach>
+        </ul>
+    </div>
+    <div class="pages right">
+        <ul class="page_list">
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">..</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--END-->
+
+
+<!--引入底部文件-->
+<include file="Layout/footer"/>
+
+<!--END-->
+<load href="__PUBLIC__/res/js/nav.js"/>
+</body>
+</html>

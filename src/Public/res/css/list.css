@@ -1,16 +1,17 @@
 /*内容区*/
 #content{
-    height: 441px;
+    margin-top:25px;
+    height: 400px;
     background: url(../img/list_body.png) no-repeat;
 }
 
 .list_title{
-    margin-top: 20px;
-    padding-top:10px;
+
+
     font-size: 20px;
     font-weight: 400;
-    height: 25px;
-    line-height: 25px;
+    height: 50px;
+    line-height: 50px;
     text-indent: 20px;
 }
 
@@ -18,16 +19,22 @@
     background:url(../img/q.gif) no-repeat 62px 15px;
     text-indent: 70px;
     display: block;
-    height:40px;
-    line-height: 40px;
-    border-bottom: dashed 1px #727272;
+    height:35px;
+    line-height: 35px;
     font-size:15px;
 }
-.pages{
+a:hover{
+    text-decoration: underline;
+}
+.lnzm_page{
     margin-top: 10px;
     height: 40px;
 }
-.page_list li{
+.lnzm_page div{
+    height: 40px;
+    float:right;
+}
+.lnzm_page a,span{
     display: block;
     float:left;
     height: 25px;
@@ -37,6 +44,7 @@
     text-align: center;
     line-height: 25px;
 }
-.page_list li a{
-    color:#FFFFFF;
+.lnzm_page .current{
+    color:#ffffff;
 }
+

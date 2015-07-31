@@ -12,17 +12,19 @@
 <include file="Layout/header"/>
 
 <!--内容区-->
+
 <div id="content" class="comWidth">
     <div class="list_title">
         工作动态
     </div>
     <div class="list_body">
         <ul>
-            <foreach name="listWorkTendency" item="item">
+            <foreach name="list" item="item">
                 <a href="{:U('WorkTendency/showContent','worktendencyid=' . $item[worktendencyid])}">{$item[worktendencytitle]}</a>
             </foreach>
         </ul>
     </div>
+    <!--
     <div class="pages right">
         <ul class="page_list">
             <li><a href="">1</a></li>
@@ -32,8 +34,9 @@
             <li><a href="">..</a></li>
         </ul>
     </div>
+    -->
 </div>
-
+<div class="lnzm_page comWidth">{$page}</div>
 <!--END-->
 
 

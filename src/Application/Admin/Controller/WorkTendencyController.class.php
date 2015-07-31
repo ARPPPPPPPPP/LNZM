@@ -17,6 +17,9 @@ class WorkTendencyController extends Controller {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
 		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
+		$this->assign('USER_ID',$_SESSION ['userId']);
+		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
+		$this->assign('CURRENT_MENU','WORKTENDENCY');
 		
 		$workTendency = M ( 'worktendency' );
 		try {
@@ -84,6 +87,9 @@ class WorkTendencyController extends Controller {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
 		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
+		$this->assign('USER_ID',$_SESSION ['userId']);
+		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
+		$this->assign('CURRENT_MENU','WORKTENDENCY');
 		
 		$workTendency = M ( 'worktendency' );
 		$editWorkTendency = $workTendency->where ( 'workTendencyId=' . $_GET ['worktendencyid'] )->find ();
@@ -110,6 +116,9 @@ class WorkTendencyController extends Controller {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
 		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
+		$this->assign('USER_ID',$_SESSION ['userId']);
+		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
+		$this->assign('CURRENT_MENU','WORKTENDENCY');
 		
 		$workTendency = M ( 'worktendency' );
 		$data ['workTendencyId'] = $_GET ['worktendencyid'];

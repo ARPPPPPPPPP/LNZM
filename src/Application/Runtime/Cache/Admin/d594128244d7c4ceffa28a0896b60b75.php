@@ -27,32 +27,51 @@
 	<div id="body-wrapper">
 		<!-- Wrapper for the radial gradient background -->
 		<div id="sidebar">
-			<div id="sidebar-wrapper">
-				<!-- Logo (221px wide) -->
-				<img id="logo" src="/LNZM/Public/resources/images/logo.png"
-					alt="<?php echo ($APPLICATION_NAME); ?>系统后台" />
-				<!-- Sidebar Profile links -->
-				<div id="profile-links">
-					您好, <a href="<?php echo U('User/userSetting');?>" title="Edit your profile"><?php echo session('userAccount');?>
-						! </a><br /> <br /> <a href="<?php echo U('User/userSetting');?>"
-						title="View the Site">个人信息设置</a> | <a href="<?php echo U('Login/logout');?>"
-						title="Sign Out">登出</a>
-				</div>
-				<ul id="main-nav">
-					<li><a href="<?php echo U('WorkTendency/allPage');?>"
-						class="nav-top-item no-submenu current">工作动态</a></li>
-					<li><a href="#" class="nav-top-item">专题建设</a>
-						<ul>
-							<li><a href="#">在这里感悟爱国</a></li>
-							<li><a href="#">在这里领悟创新</a></li>
-							<li><a href="#">在这里追求富强</a></li>
-							<li><a href="#">在这里勇于担当</a></li>
-						</ul></li>
-					<li><a href="#" class="nav-top-item no-submenu">通知公告</a></li>
-					<li><a href="#" class="nav-top-item no-submenu">活动实践</a></li>
-					<li><a href="#" class="nav-top-item no-submenu">支部风采</a></li>
-					<li><a href="#" class="nav-top-item no-submenu">系统设置</a></li>
-				</ul>
+			<div id="sidebar">
+				<?php if($USER_LEVEL < 10): ?><!-- 最高权限 -->
+<div id="sidebar-wrapper">
+	<!-- Logo (221px wide) -->
+	<img id="logo" src="/LNZM/Public/resources/images/logo.png"
+		alt="<?php echo ($APPLICATION_NAME); ?>系统后台" />
+	<!-- Sidebar Profile links -->
+	<div id="profile-links">
+		您好, <a href="<?php echo U('User/userSetting','userid=' . $USER_ID);?>"
+			title="Edit your profile"><?php echo session('userAccount');?> ! </a><br /> <br />
+		<a href="<?php echo U('User/userSetting','userid=' . $USER_ID);?>"
+			title="View the Site">个人信息设置</a> | <a href="<?php echo U('Login/logout');?>"
+			title="Sign Out">登出</a>
+	</div>
+	<ul id="main-nav">
+		<li><a href="<?php echo U('WorkTendency/allPage');?>"<?php if($CURRENT_MENU == 'WORKTENDENCY'): ?>class="nav-top-item no-submenu current" <?php else: ?>
+				class="nav-top-item no-submenu"<?php endif; ?>>工作动态</a></li>
+
+		<li><a href="#"<?php if($CURRENT_MENU == '专题建设'): ?>class="nav-top-item no-submenu current" <?php else: ?>
+				class="nav-top-item no-submenu"<?php endif; ?>>专题建设</a>
+			<ul>
+				<li><a href="#">在这里感悟爱国</a></li>
+				<li><a href="#">在这里领悟创新</a></li>
+				<li><a href="#">在这里追求富强</a></li>
+				<li><a href="#">在这里勇于担当</a></li>
+			</ul></li>
+		<li><a href="#"<?php if($CURRENT_MENU == '通知公告'): ?>class="nav-top-item no-submenu current" <?php else: ?>
+				class="nav-top-item no-submenu"<?php endif; ?>>通知公告</a></li>
+		<li><a href="#"<?php if($CURRENT_MENU == '活动实践'): ?>class="nav-top-item no-submenu current" <?php else: ?>
+				class="nav-top-item no-submenu"<?php endif; ?>>活动实践</a></li>
+		<li><a href="#"<?php if($CURRENT_MENU == '支部风采'): ?>class="nav-top-item no-submenu current" <?php else: ?>
+				class="nav-top-item no-submenu"<?php endif; ?>>支部风采</a></li>
+		<li><a href="<?php echo U('User/userSetting','userid=' . $USER_ID);?>"<?php if($CURRENT_MENU == 'USER'): ?>class="nav-top-item
+				no-submenu current" <?php else: ?> class="nav-top-item no-submenu"<?php endif; ?>>个人设置</a></li>
+		<li><a href="#"<?php if(($CURRENT_MENU == 'ACADEMYBRANCHSETTING') OR ($CURRENT_MENU == 'ACCOUNTSETTING')): ?>class="nav-top-item no-submenu current" <?php else: ?>
+				class="nav-top-item no-submenu"<?php endif; ?>>系统设置</a>
+			<ul>
+				<li><a href="<?php echo U('SystemSetting/organizationSystemSetting');?>"<?php if($CURRENT_MENU == 'ACADEMYBRANCHSETTING'): ?>class="current" <?php else: ?> class=""<?php endif; ?>>学院支部设置</a></li>
+				<li><a href="<?php echo U('SystemSetting/accountSetting');?>"<?php if($CURRENT_MENU == 'ACCOUNTSETTING'): ?>class="current" <?php else: ?> class=""<?php endif; ?>>人员设置</a></li>
+			</ul></li>
+	</ul>
+</div>
+<?php elseif(($USER_LEVEL > 10) AND ($USER_LEVEL < 20)): ?> <!-- 学院权限 -->
+学院菜单 <?php else: ?> <!-- 支部权限 --> 支部菜单<?php endif; ?>
+
 			</div>
 		</div>
 		<!-- End #sidebar -->

@@ -45,7 +45,8 @@ class WorkTendencyController extends Controller {
 		
 		// 查询当前所有的工作状态并且分页
 		$count = $workTendency->count ();
-		$page = new \Think\Page ( $count, C ( 'PAGE_COUNT' ) );
+		$page = new \Think\Page ( $count, C ( 'PAGE_COUNT' ),'p1' );
+		$page->setP ( 'p1' );
 		$orderby ['worktendencyid'] = 'desc';
 		$list = $workTendency->order ( $orderby )->limit ( $page->firstRow . ',' . $page->listRows )->select ();
 		$this->assign ( 'list', $list ); // 赋值数据集

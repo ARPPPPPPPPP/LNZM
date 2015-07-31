@@ -23,7 +23,7 @@
     line-height: 35px;
     font-size:15px;
 }
-a:hover{
+.list_body a:hover{
     text-decoration: underline;
 }
 .lnzm_page{

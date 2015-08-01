@@ -10,8 +10,8 @@
 .back{
     display: block;
     margin-top: 10px;
-    width:65px;
-    height: 30px;
+    width:80px;
+    height: 25px;
     background:url(../img/back.png) no-repeat;
     margin-right: 30px;
 }

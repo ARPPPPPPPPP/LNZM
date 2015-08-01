@@ -7,7 +7,7 @@ class IndexController extends Controller {
     	$listWorkTendency = $workTendency->limit (6)->select ();
     	
     	$this->assign('listWorkTendency',$listWorkTendency);
-        $this->show();
+        $this->display();
     }
     
     public function queryWorkTendency(){

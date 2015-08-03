@@ -1,0 +1,30 @@
+[ 2015-07-25T19:33:15+08:00 ] 127.0.0.1 /LNZM/index.php/LNZM/index.php/Admin/WorkTendency/allPage.html.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:LNZM
+
+[ 2015-07-25T19:33:38+08:00 ] 127.0.0.1 /LNZM/index.php/LNZM/index.php/Admin/WorkTendency/allPage.html.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:LNZM
+
+[ 2015-07-25T19:33:41+08:00 ] 127.0.0.1 /LNZM/index.php/LNZM/index.php/Admin/WorkTendency/allPage.html.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载模块:LNZM
+
+[ 2015-07-25T19:34:25+08:00 ] 127.0.0.1 /LNZM/index.php/LNZM/index.php/Admin/WorkTendency/allPage.html.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载模块:LNZM
+
+[ 2015-07-25T19:35:08+08:00 ] 127.0.0.1 /LNZM/index.php/LNZM/index.php/Admin/WorkTendency/allPage.html.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:LNZM
+

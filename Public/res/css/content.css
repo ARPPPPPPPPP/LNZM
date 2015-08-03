@@ -1,0 +1,19 @@
+
+/*内容区*/
+#content{
+    min-height: 400px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+
+.back{
+    display: block;
+    margin-top: 10px;
+    width:80px;
+    height: 25px;
+    background:url(../img/back.png) no-repeat;
+    margin-right: 30px;
+}
+
+

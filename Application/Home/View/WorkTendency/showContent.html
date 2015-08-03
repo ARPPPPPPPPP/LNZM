@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作动态正文页</title>
+    <load href="__PUBLIC__/res/css/global.css" />
+    <load href="__PUBLIC__/res/css/content.css" />
+    <load href="__PUBLIC__/res/js/jquery-1.11.3.min.js"/>
+</head>
+<body>
+<!--引入头部-->
+<include file="Layout/header"/>
+
+<!--内容区-->
+<div id="content" class="comWidth">
+        {$content}
+</div>
+<!--END-->
+
+<div class="comWidth" style="height:35px;">
+    <a href="{:U('WorkTendency/showList')}"><span class="back right"></span></a>
+</div>
+
+<!--引入底部文件-->
+<include file="Layout/footer"/>
+
+<!--END-->
+<load href="__PUBLIC__/res/js/nav.js"/>
+</body>
+</html>

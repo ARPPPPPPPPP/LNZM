@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>岭南追梦主页</title>
+	<load href="__PUBLIC__/res/css/global.css" />
+	<load href="__PUBLIC__/res/css/index.css" />
+	<load href="__PUBLIC__/res/js/jquery-1.11.3.min.js" />
+</head>
+<body>
+<!--引入头部-->
+<include file="Layout/header"/>
+<!--大图区-->
+<div id="bgPic" class="comWidth">
+	<a href="">
+		<img  src="__PUBLIC__/res//img/theme1.png"  alt="专题图片">
+	</a>
+	<a href="">
+		<img src="__PUBLIC__/res//img/bg1.jpg" alt="专题图片"/>
+	</a>
+	<a  href="">
+		<img  src="__PUBLIC__/res//img/theme1.png"  alt="专题图片">
+	</a>
+	<a  href="">
+		<img src="__PUBLIC__/res//img/bg1.jpg" alt="专题图片"/>
+	</a>
+	<!--大图区的小块-->
+	<div id="smallDiv">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+</div>
+<!--END-->
+
+<!--模块区-->
+
+<div id="content" class="comWidth">
+	<!--左边模块-->
+	<div id="area-1" class="left">
+		<div class="area left">
+			<div class="info_title">
+				<b class="left">工作动态</b>
+				<a href="{:U('WorkTendency/showList')}"><span class="right">更多>></span></a>
+			</div>
+			<div class="info_body">
+				<ul>
+					<foreach name="listWorkTendency" item="item">
+						<li>
+							<a href="{:U('WorkTendency/showContent','worktendencyid=' . $item[worktendencyid])}">{$item[worktendencytitle]}</a>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+		<div class="area left">
+			<div class="info_title">
+				<b class="left">通知公告</b>
+				<a href=""><span class="right">更多>></span></a>
+			</div>
+			<div class="info_body">
+				<ul>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="area left">
+			<div class="info_title">
+				<b class="left">活动实践</b>
+				<a href="{:U('PracticalActivities/socialPractice')}"><span class="right">更多>></span></a>
+			</div>
+			<div class="info_body">
+				<ul>
+					<li><a href="">广州市天河区五山路381号/广州市番禺区广州大学城邮政编码</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="area left">
+			<div class="info_title">
+				<b class="left">支部风采</b>
+				<a href=""><span class="right">更多>></span></a>
+			</div>
+			<div class="info_body">
+				<ul>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+					<li><a href="">链接</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--END-->
+	<!--右边模块-->
+	<div id="area-2" class="right">
+		<div class="small_bar_pic">
+			<a href="">
+				<img src="__PUBLIC__/res//img/b_visitor.png" alt=""/>
+				<div class="bar">
+					访问量统计
+				</div>
+			</a>
+			<a href="">
+				<img src="__PUBLIC__/res//img/b_rank.png" alt=""/>
+				<div class="bar">
+					支部足迹
+				</div>
+			</a>
+		</div>
+		<div class="small_block_pic">
+			<div class="left" style="width: 146px;margin-left:10px;">
+				<a href="">
+					<img  src="__PUBLIC__/res//img/b_blog.png" alt="微博关注"/>
+					<div class="bar">
+						微博关注
+					</div>
+				</a>
+				<a href="">
+					<img src="__PUBLIC__/res//img/b_app.png" alt="app下载"/>
+					<div class="bar">
+						app下载
+					</div>
+				</a>
+			</div>
+
+			<div class="right" style="width: 146px;margin-right:10px;">
+				<a href="">
+					<img src="__PUBLIC__/res//img/b_wechat.png" alt="微信关注"/>
+					<div class="bar">
+						微信关注
+					</div>
+				</a>
+				<a href="">
+					<img src="__PUBLIC__/res//img/b_backstage.png" alt="后台登录"/>
+					<div class="bar">
+						后台登录
+					</div>
+				</a>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--END-->
+</div>
+<!--END-->
+
+<!--引入底部文件-->
+<include file="Layout/footer"/>
+
+<load href="__PUBLIC__/res/js/index.js" />
+</body>
+</html>

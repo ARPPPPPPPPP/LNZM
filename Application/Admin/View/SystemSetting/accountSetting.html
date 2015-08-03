@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$APPLICATION_NAME}系统后台</title>
+<!--                       CSS                       -->
+<!-- Reset Stylesheet -->
+<load href="__PUBLIC__/resources/css/reset.css" />
+<!-- Main Stylesheet -->
+<load href="__PUBLIC__/resources/css/style.css" />
+<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+<load href="__PUBLIC__/resources/css/invalid.css" />
+<!--                       Javascripts                       -->
+<!-- jQuery -->
+<load href="__PUBLIC__/resources/scripts/jquery-1.3.2.min.js" />
+<!-- jQuery Configuration -->
+<load href="__PUBLIC__/resources/scripts/simpla.jquery.configuration.js" />
+<!-- Facebox jQuery Plugin -->
+<load href="__PUBLIC__/resources/scripts/facebox.js" />
+<!-- jQuery WYSIWYG Plugin -->
+<load href="__PUBLIC__/resources/scripts/jquery.wysiwyg.js" />
+<!-- jQuery Datepicker Plugin -->
+<load href="__PUBLIC__/resources/scripts/jquery.datePicker.js" />
+<load href="__PUBLIC__/resources/scripts/jquery.date.js" />
+</head>
+<body>
+	<div id="body-wrapper">
+		<!-- Wrapper for the radial gradient background -->
+		<div id="sidebar">
+			<div id="sidebar">
+				<include file='./Application/Admin/View/Menu/slidebar.html' />
+			</div>
+		</div>
+		<div id="main-content">
+			<div class="content-box">
+				<!-- Start Content Box -->
+				<div class="content-box-header">
+					<h3>系统设置:人员设置</h3>
+					<ul class="content-box-tabs">
+						<li><a href="#tab1" class="default-tab">当前设置</a></li>
+						<!-- href must be unique and match the id of target div -->
+						<li><a href="#tab2">添加人员</a></li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<!-- End .content-box-header -->
+				<div class="content-box-content">
+					<div class="tab-content default-tab" id="tab1">
+
+						<table>
+							<thead>
+								<tr>
+									<th><input class="check-all" type="checkbox" /></th>
+									<th>昵称</th>
+									<th>账号</th>
+									<th>用户权限等级</th>
+									<th>学院</th>
+									<th>支部</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<td colspan="7">
+										<div class="bulk-actions align-left">
+											<a class="button" onclick="deleteUserMulti()">删除选中</a>
+										</div>
+										<div class="pagination">{$pageUser}</div> <!-- End .pagination -->
+										<div class="clear"></div>
+									</td>
+								</tr>
+							</tfoot>
+							<tbody>
+								<foreach name="listUser" item="itemUser">
+								<tr>
+									<td><input type="checkbox" name='checkboxuser'
+										id='{$itemUser[userid]}' /></td>
+									<td>{$itemUser[usernickname]}</td>
+									<td>{$itemUser[useraccount]}</td>
+									<td><if condition="$itemUser[userlevel] eq 1"> 组织部 <elseif
+											condition="$itemUser[userlevel] eq 11" /> 学院 <else /> 支部 </if></td>
+									<td>{$itemUser[useracademy]}</td>
+									<td>{$itemUser[userbranch]}</td>
+									<td><a
+										href="{:U('SystemSetting/editUser','userid=' . $itemUser[userid])}"
+										title="Edit" target="_blank"><img
+											src="__PUBLIC__/resources/images/icons/pencil.png" alt="编辑" /></a>
+										<a
+										href="{:U('SystemSetting/accountSetting','deleteUser=' . $itemUser[userid])}"
+										title="Delete"><img
+											src="__PUBLIC__/resources/images/icons/cross.png"
+											onclick="javascript:return confirm('确定要删除吗?');" alt="删除" /></a></td>
+								</tr>
+								</foreach>
+
+							</tbody>
+						</table>
+					</div>
+					<!-- End #tab1 -->
+					<div class="tab-content" id="tab2">
+						<form action="{:U('SystemSetting/addAccount')}" method="post">
+							<fieldset>
+								<!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+								<p>
+									<label>人员昵称</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="userNickname" /> <br />
+								</p>
+								<p>
+									<label>账号</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="userAccount" /> <br />
+								</p>
+								<p>
+									<label>密码</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="userPassword" /> <br />
+								</p>
+								<p>
+									<label>地址</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="userAddress" /> <br />
+								</p>
+								<p>
+									<label>电话</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="userTelnumber" /> <br />
+								</p>
+								<p>
+									<label>邮箱</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="userMail" /> <br />
+								</p>
+								<p>
+									<label>用户描述</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="userDescription" /> <br />
+								</p>
+								<p>
+									<label>用户权限等级</label> <select name="userLevel"
+										class="small-input">
+										<foreach name="listUserLevel" item="itemUserLevel">
+										<if condition="$itemUserLevel eq 1">
+										<option value="1" selected="selected">组织部</option>
+										<elseif condition="$itemUserLevel eq 11" />
+										<option value="11">学院</option>
+										<else />
+										<option value="21">支部</option>
+										</if> </foreach>
+									</select> <br />
+								</p>
+								<p>
+									<label>学院</label> <select name="userAcademy"
+										class="small-input">
+										<foreach name="listAllAcademy" item="itemAcademy">
+										<option value="{$itemAcademy[academyid]}">{$itemAcademy[academyname]}</option>
+										</foreach>
+									</select> <br />
+								</p>
+								<p>
+									<label>支部</label> <select name="userBranch" class="small-input">
+										<foreach name="listAllBranch" item="itemBranch">
+										<option value="{$itemBranch[branchid]}">{$itemBranch[branchname]}</option>
+										</foreach>
+									</select> <br />
+								</p>
+								<p>
+									<input class="button" type="submit" value="确定" />
+								</p>
+							</fieldset>
+							<div class="clear"></div>
+							<!-- End .clear -->
+						</form>
+					</div>
+					<!-- End #tab2 -->
+				</div>
+				<!-- End .content-box-content -->
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	function deleteUserMulti() {
+		if (confirm('确定要删除吗?')) {
+			var id = document.getElementsByName('checkboxuser');
+			var value = new Array();
+			for (var i = 0; i < id.length; i++) {
+				if (id[i].checked)
+					value.push(id[i].id);
+			}
+			//alert(value.toString());
+			window.location = "{:U('SystemSetting/accountSetting','deleteUserMulti=-1')}"
+					+ "," + value.toString();
+		}
+	}
+</script>

@@ -355,4 +355,80 @@ class SystemSettingController extends Controller {
 			$this->error ( C ( 'ADD_FAIL' ), 'accountSetting' );
 		}
 	}
+	public function editUser() {
+		if (! isset ( $_SESSION ['userId'] )) {
+			$this->error ( C ( 'LOGIN_FIRST' ) );
+		}
+		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
+		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
+		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
+		$this->assign ( 'CURRENT_MENU', 'SYSTEMSETTING' );
+	
+
+		$user = M ( 'user' );
+		$editUser = $user->where ( 'userId=' . $_GET ['userid'] )->find ();
+		
+// 		dump ($editUser);
+// 		return;
+	
+	
+		// 		dump($data);
+		// 		return;
+		$academy = M ( 'academy' );
+		$orderbyAcademy ['academyid'] = 'desc';
+		$listAcademy = $academy->order ( $orderbyAcademy )->select ();
+		$this->assign ( 'listAcademy', $listAcademy );
+		$branch = M ( 'branch' );
+		$orderbyBranch ['branchid'] = 'desc';
+		$listBranch = $branch->order ( $orderbyBranch )->select ();
+		$this->assign ( 'listBranch', $listBranch );
+		$this->assign ( 'user', $editUser );
+		$this->display ();
+	}
+	public function editUserSubmit() {
+		if (! isset ( $_SESSION ['userId'] )) {
+			$this->error ( C ( 'LOGIN_FIRST' ) );
+		}
+		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
+		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
+		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
+		$this->assign ( 'CURRENT_MENU', 'SYSTEMSETTING' );
+	
+		$user = M ( 'user' );
+		$data ['userId'] = $_GET ['userid'];
+		$data ['userNickname'] = $_POST ['usernickname'];
+		$data ['userPassword'] = $_POST ['userpassword'];
+		$data ['userAddress'] = $_POST ['useraddress'];
+		$data ['userTelnumber'] = $_POST ['usertelnumber'];
+		$data ['userDescription'] = $_POST ['userdescription'];
+		$data ['userAcademy'] = $_POST ['useracademy'];
+		$data ['userMail'] = $_POST ['usermail'];
+		$data ['userAcademy'] = $_POST ['useracademy'];
+		$data ['userBranch'] = $_POST ['userbranch'];
+		
+	
+		// dump($data);
+		// return;
+		$result = $user->save ( $data );
+		if ($result !== false) {
+			// echo U('WorkTendency/allPage');
+			echo '
+					<head>
+						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+					</head>
+					<h1 style="line-height:400px;text-align:center">成功，1秒后自动关闭</h1>
+					<script language="javascript">
+						function closeWindow(){
+							window.opener=null;
+							window.open("","_self")
+							window.close();
+						}
+						setTimeout("closeWindow()",1000);
+	
+					</script>';
+			// $this->success ( C ( 'EDIT_SUCCESS' ), '/WorkTendency/allPage' );
+		} else {
+			$this->error ( C ( 'EDIT_FAIL' ) );
+		}
+	}
 }

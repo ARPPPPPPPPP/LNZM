@@ -3,8 +3,15 @@
 #content{
     margin-top: 40px;
     overflow-x: hidden;
+    letter-spacing: 3px;
+    line-height: 25px;
 }
 
+.article{
+    width: 880px;
+    padding: 10px 40px 0 40px;
+    background-color: #ffffff;
+}
 
 .back{
     display: block;

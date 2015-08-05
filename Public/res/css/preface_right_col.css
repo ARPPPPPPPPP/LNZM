@@ -1,0 +1,25 @@
+/**/
+
+.right_col{
+    width:730px;
+    letter-spacing: 3px;
+}
+
+.right_col_title{
+    width: 100%;
+    height:50px;
+    line-height: 50px;
+    font-size:25px;
+    color:#ed1941;
+   text-align: center;
+}
+
+.right_col_content{
+    width: 100%;
+    margin-top:25px;
+}
+
+.right_col_content span{
+    height: 30px;
+    line-height: 30px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在这里感悟爱国-在广东</title>
+    <load href="__PUBLIC__/res/css/global.css" />
+    <load href="__PUBLIC__/res/css/left_col.css" />
+    <load href="__PUBLIC__/res/css/places_right_col.css" />
+    <load href="__PUBLIC__/res/js/jquery-1.11.3.min.js" />
+</head>
+<body>
+
+<!--引入头部-->
+<include file="Layout/header"/>
+
+<div id="content" class="comWidth">
+    <!--左边栏-->
+    <div class="left_col left">
+        <div class="left_col_title">
+            在这里感悟爱国
+        </div>
+        <div class="left_col_items">
+            <ul>
+                <li><a href="{:U('Patriotic/preface')}">序</a></li>
+                <li class="active"><a href="{:U('Patriotic/places')}">在广东</a></li>
+                <li><a href="{:U('Patriotic/introduction')}">专家导读</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--END-->
+
+    <!--右边栏-->
+    <div class="right_col right">
+        <div class="right_col_title"></div>
+        <div class="right_col_content">
+
+
+        </div>
+    </div>
+    <!--END-->
+</div>
+<!--END-->
+
+<!--引入底部-->
+<include file="Layout/footer"/>
+<!--END-->
+<load href="__PUBLIC__/res/js/nav.js" />
+</body>
+</html>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-08-05 10:15:30
+Date: 2015-08-09 01:16:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,6 +35,30 @@ INSERT INTO `lnzm_academy` VALUES ('3', '环境学院', '环院，南校区', nu
 INSERT INTO `lnzm_academy` VALUES ('14', '法学院', '南校区', null);
 INSERT INTO `lnzm_academy` VALUES ('15', '艺术学院', '南校区', null);
 INSERT INTO `lnzm_academy` VALUES ('16', '经贸学院', '南校区', null);
+
+-- ----------------------------
+-- Table structure for lnzm_activitypractice
+-- ----------------------------
+DROP TABLE IF EXISTS `lnzm_activitypractice`;
+CREATE TABLE `lnzm_activitypractice` (
+  `activityPracticeId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `activityPracticeTitle` varchar(255) NOT NULL DEFAULT '',
+  `activityPracticeInformation` varchar(255) DEFAULT '',
+  `activityPracticeReleaseId` bigint(20) NOT NULL DEFAULT '0',
+  `activityPracticeReleaseDate` datetime DEFAULT NULL,
+  `activityPracticeContentURL` varchar(255) NOT NULL DEFAULT '',
+  `activityPracticePageView` bigint(20) NOT NULL DEFAULT '0',
+  `activityPracticeAuditStatus` bigint(20) NOT NULL DEFAULT '0',
+  `activityPracticeAuditId` bigint(20) NOT NULL DEFAULT '0',
+  `activityPracticeAuditDate` datetime DEFAULT NULL,
+  `activityPracticeType` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`activityPracticeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of lnzm_activitypractice
+-- ----------------------------
+INSERT INTO `lnzm_activitypractice` VALUES ('5', '这里是活动实践编辑测试，现在我们需要测试一个名字长一点的活动实践', '', '1', '2015-08-07 21:08:49', './Public/contentHtml/143900356223032.html', '0', '1', '1', '2015-08-07 21:08:49', '0');
 
 -- ----------------------------
 -- Table structure for lnzm_branch
@@ -84,6 +108,30 @@ INSERT INTO `lnzm_download` VALUES ('11', '123456789', '', '1', '2015-08-04 21:0
 INSERT INTO `lnzm_download` VALUES ('12', '123412', '', '1', '2015-08-04 21:07:55', '55c0bf860e0c8.PNG', '0', 'IMG_0294.PNG');
 
 -- ----------------------------
+-- Table structure for lnzm_notice
+-- ----------------------------
+DROP TABLE IF EXISTS `lnzm_notice`;
+CREATE TABLE `lnzm_notice` (
+  `noticeId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `noticeTitle` varchar(255) NOT NULL DEFAULT '',
+  `noticeInformation` varchar(255) DEFAULT '',
+  `noticeReleaseId` bigint(20) NOT NULL DEFAULT '0',
+  `noticeReleaseDate` datetime DEFAULT NULL,
+  `noticeContentURL` varchar(255) NOT NULL DEFAULT '',
+  `noticePageView` bigint(20) NOT NULL DEFAULT '0',
+  `noticeAuditStatus` bigint(20) NOT NULL DEFAULT '0',
+  `noticeAuditId` bigint(20) NOT NULL DEFAULT '0',
+  `noticeAuditDate` datetime DEFAULT NULL,
+  `noticeType` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`noticeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of lnzm_notice
+-- ----------------------------
+INSERT INTO `lnzm_notice` VALUES ('9', '12345', '', '1', '2015-08-08 14:54:44', './Public/contentHtml/143901842023395.html', '0', '1', '1', '2015-08-08 14:54:44', '0');
+
+-- ----------------------------
 -- Table structure for lnzm_user
 -- ----------------------------
 DROP TABLE IF EXISTS `lnzm_user`;
@@ -125,12 +173,12 @@ CREATE TABLE `lnzm_worktendency` (
   `workTendencyContentURL` varchar(255) NOT NULL DEFAULT '',
   `workTendencyPageView` bigint(20) DEFAULT '0',
   PRIMARY KEY (`workTendencyId`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lnzm_worktendency
 -- ----------------------------
-INSERT INTO `lnzm_worktendency` VALUES ('15', '测试1', '', '1', '2015-07-31 14:06:29', './Public/contentHtml/14383227892102949693.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('15', '测试1', '', '1', '2015-07-31 14:06:29', './Public/contentHtml/14383227892102949693.html', '12');
 INSERT INTO `lnzm_worktendency` VALUES ('16', '测试2', '', '0', '2015-07-31 14:04:27', './Public/contentHtml/14383226671897751511.html', '0');
 INSERT INTO `lnzm_worktendency` VALUES ('17', '测试3', '', '0', '2015-07-31 14:08:31', './Public/contentHtml/14383229111402342416.html', '0');
 INSERT INTO `lnzm_worktendency` VALUES ('18', '测试4', '', '0', '2015-07-31 14:09:38', './Public/contentHtml/14383229781914937041.html', '0');
@@ -141,13 +189,14 @@ INSERT INTO `lnzm_worktendency` VALUES ('22', '测试8', '', '0', '2015-07-31 14
 INSERT INTO `lnzm_worktendency` VALUES ('23', '测试9', '', '0', '2015-07-31 14:11:47', './Public/contentHtml/1438323107506848589.html', '0');
 INSERT INTO `lnzm_worktendency` VALUES ('24', '测试10', '', '0', '2015-07-31 14:12:12', './Public/contentHtml/14383231321049856954.html', '0');
 INSERT INTO `lnzm_worktendency` VALUES ('25', '测试11', '', '0', '2015-07-31 14:34:26', './Public/contentHtml/1438324466669735106.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('26', '测试12', '', '0', '2015-07-31 14:36:34', './Public/contentHtml/1438324594827082445.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('27', '测试13', '', '0', '2015-07-31 15:49:50', './Public/contentHtml/14383289902136839132.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('28', '测试14', '', '0', '2015-07-31 15:50:07', './Public/contentHtml/1438329007574692184.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('29', '测试15', '', '0', '2015-07-31 15:50:21', './Public/contentHtml/14383290211201715968.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('30', '测试16', '', '0', '2015-07-31 15:50:36', './Public/contentHtml/143832903651904573.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('31', '测试17', '', '0', '2015-07-31 15:50:51', './Public/contentHtml/1438329051549476571.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('32', '测试18', '', '0', '2015-07-31 15:51:05', './Public/contentHtml/1438329065231596999.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('33', '测试19', '', '0', '2015-07-31 15:51:18', './Public/contentHtml/14383290781781977939.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('34', '测试20', '', '0', '2015-07-31 15:51:31', './Public/contentHtml/1438329091865930050.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('35', '测试21', '', '0', '2015-08-03 09:26:51', './Public/contentHtml/143856521128502.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('26', '测试12', '', '1', '2015-07-31 14:36:34', './Public/contentHtml/1438324594827082445.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('27', '测试13', '', '1', '2015-07-31 15:49:50', './Public/contentHtml/14383289902136839132.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('28', '测试14', '', '1', '2015-07-31 15:50:07', './Public/contentHtml/1438329007574692184.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('29', '测试15', '', '1', '2015-07-31 15:50:21', './Public/contentHtml/14383290211201715968.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('30', '测试16', '', '1', '2015-07-31 15:50:36', './Public/contentHtml/143832903651904573.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('31', '测试17', '', '1', '2015-07-31 15:50:51', './Public/contentHtml/1438329051549476571.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('32', '测试18', '', '1', '2015-07-31 15:51:05', './Public/contentHtml/1438329065231596999.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('33', '测试19', '', '1', '2015-07-31 15:51:18', './Public/contentHtml/14383290781781977939.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('34', '测试20', '', '1', '2015-07-31 15:51:31', './Public/contentHtml/1438329091865930050.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('35', '测试21', '', '1', '2015-08-06 01:23:20', './Public/contentHtml/14387954006458.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('36', '1234567', '', '1', '2015-08-08 10:56:19', './Public/contentHtml/143900274627079.html', '0');

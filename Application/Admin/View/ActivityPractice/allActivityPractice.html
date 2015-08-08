@@ -33,7 +33,7 @@
 			<div class="content-box">
 				<!-- Start Content Box -->
 				<div class="content-box-header">
-					<h3>工作动态</h3>
+					<h3>活动实践</h3>
 					<ul class="content-box-tabs">
 						<li><a href="#tab1" class="default-tab">列表</a></li>
 						<!-- href must be unique and match the id of target div -->
@@ -49,16 +49,20 @@
 							<thead>
 								<tr>
 									<th><input class="check-all" type="checkbox" /></th>
-									<th>工作动态标题</th>
-									<th>工作动态发布人</th>
-									<th>工作动态发布时间</th>
-									<th>工作动态浏览量</th>
+									<th>标题</th>
+									<th>类型</th>
+									<th>发布人</th>
+									<th>发布时间</th>
+									<th>审核人</th>
+									<th>审核状态</th>
+									<th>审核时间</th>
+									<th>浏览量</th>
 									<th>操作</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<td colspan="6">
+									<td colspan="10">
 										<div class="bulk-actions align-left">
 											<a class="button" onclick="deleteMulti()">删除选中</a>
 										</div>
@@ -71,17 +75,21 @@
 								<foreach name="list" item="item">
 								<tr>
 									<td><input type="checkbox" name='checkboxscut'
-										id='{$item[worktendencyid]}' /></td>
-									<td>{$item[worktendencytitle]}</td>
-									<td>{$item[worktendencyreleaseid]}</td>
-									<td>{$item[worktendencyreleasedate]}</td>
-									<td>{$item[worktendencypageview]}</td>
+										id='{$item[activitypracticeid]}' /></td>
+									<td>{$item[activitypracticetitle]}</td>
+									<td>{$item[activitypracticetype]}</td>
+									<td>{$item[activitypracticereleaseid]}</td>
+									<td>{$item[activitypracticereleasedate]}</td>
+									<td>{$item[activitypracticeauditid]}</td>
+									<td>{$item[activitypracticeauditstatus]}</td>
+									<td>{$item[activitypracticeauditdate]}</td>
+									<td>{$item[activitypracticepageview]}</td>
 									<td><a
-										href="{:U('WorkTendency/editWorkTendency','worktendencyid=' . $item[worktendencyid])}"
+										href="{:U('ActivityPractice/editActivityPractice','activitypracticeid=' . $item[activitypracticeid])}"
 										title="Edit" target="_blank"><img
 											src="__PUBLIC__/resources/images/icons/pencil.png" alt="编辑" /></a>
 										<a
-										href="{:U('WorkTendency/allPage','delete=' . $item[worktendencyid])}"
+										href="{:U('ActivityPractice/allActivityPractice','delete=' . $item[activitypracticeid])}"
 										title="Delete"><img
 											src="__PUBLIC__/resources/images/icons/cross.png"
 											onclick="javascript:return confirm('确定要删除吗?');" alt="删除" /></a></td>
@@ -93,19 +101,26 @@
 					</div>
 					<!-- End #tab1 -->
 					<div class="tab-content" id="tab2">
-						<form action="{:U('WorkTendency/addWorkTendency')}" method="post">
+						<form action="{:U('ActivityPractice/addActivityPractice')}"
+							method="post">
 							<fieldset>
 								<!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<p>
-									<label>工作动态标题</label> <input
+									<label>活动实践标题</label> <input
 										class="text-input medium-input datepicker" type="text"
-										id="medium-input" name="workTendencyTitle" /> <br />
+										id="medium-input" name="activityPracticeTitle" /> <br />
 								</p>
 								<p>
-									<label>工作动态内容</label>
+									<label>活动实践类型</label> <select name="activityPracticeType"
+										class="small-input">
+										<option value="0" selected="selected">社会实践</option>
+										<option value="1">志愿服务</option>
+									</select> <br />
+								</p>
+								<p>
+									<label>活动实践内容</label>
 									<div style='height: 600px'>{$editorHtml}</div>
 								</p>
-
 								<p>
 									<input class="button" type="submit" value="确定" />
 								</p>
@@ -132,7 +147,7 @@
 					value.push(id[i].id);
 			}
 			//alert(value.toString());
-			window.location = "{:U('WorkTendency/allPage','deleteMulti=-1')}"
+			window.location = "{:U('ActivityPractice/allActivityPractice','deleteMulti=-1')}"
 					+ "," + value.toString();
 		}
 	}

@@ -26,15 +26,19 @@
 				<li><a href="#">在这里追求富强</a></li>
 				<li><a href="#">在这里勇于担当</a></li>
 			</ul></li>
-		<li><a href="#"<if condition="$CURRENT_MENU eq '通知公告'">
+		<li><a href="{:U('Notice/allNotice')}"<if condition="$CURRENT_MENU eq 'NOTICE'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>通知公告</a></li>
-		<li><a href="#"<if condition="$CURRENT_MENU eq '活动实践'">
+		<li><a href="{:U('ActivityPractice/allActivityPractice')}"<if condition="$CURRENT_MENU eq 'ACTIVITYPRACTICE'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>活动实践</a></li>
 		<li><a href="#"<if condition="$CURRENT_MENU eq '支部风采'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>支部风采</a></li>
+		<li><a href="{:U('Download/allDownload')}"<if
+					condition="$CURRENT_MENU eq 'DOWNLAODSETTING'">
+				class="nav-top-item no-submenu current" <else />
+				class="nav-top-item no-submenu" </if>>下载管理</a></li>
 		<li><a href="{:U('User/userSetting','userid=' . $USER_ID)}"<if
 					condition="$CURRENT_MENU eq 'USER'"> class="nav-top-item
 				no-submenu current" <else /> class="nav-top-item no-submenu" </if>>个人设置</a></li>

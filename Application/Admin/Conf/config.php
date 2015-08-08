@@ -5,6 +5,7 @@ return array (
 // 		'TMPL_TEMPLATE_SUFFIX' => '.tpl' 
 		'APPLICATION_NAME' => '岭南追梦',
 		'APPLICATION_CONTENTHTML_PATH' => './Public/contentHtml',
+		'APPLICATION_DOWNLOAD_PATH' => './Public/Download/',
 		
 		
 		//后台提示

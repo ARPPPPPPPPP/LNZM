@@ -29,7 +29,7 @@
 		<div class="content-box">
 			<!-- Start Content Box -->
 			<div class="content-box-header">
-				<h3>工作动态编辑:{$workTendency['worktendencytitle']}</h3>
+				<h3>通知公告编辑:{$notice['noticetitle']}</h3>
 				<ul class="content-box-tabs">
 					<li><a href="#tab2">编辑</a></li>
 				</ul>
@@ -38,37 +38,20 @@
 			<!-- End .content-box-header -->
 			<div class="content-box-content">
 				<form
-					action="{:U('WorkTendency/editWorkTendencySubmit','worktendencyid=' . $workTendency[worktendencyid])}"
+					action="{:U('Notice/editNoticeSubmit','noticeid=' . $notice[noticeid])}"
 					method="post">
 					<fieldset>
 						<!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 						<p>
-							<label>工作动态标题</label> <input
+							<label>通知公告标题</label> <input
 								class="text-input medium-input datepicker" type="text"
-								id="medium-input" name="workTendencyTitle"
-								value="{$workTendency['worktendencytitle']}" /> <br />
+								id="medium-input" name="noticeTitle"
+								value="{$notice['noticetitle']}" /> <br />
 						</p>
 						<p>
-							<label>工作动态发布人</label> <input
-								class="text-input medium-input datepicker" type="text"
-								id="medium-input" name="workTendencyReleaseId"
-								disabled="disabled"
-								style="background-image: none; background-color: #ECE3E3"
-								value="{$workTendency['worktendencyreleaseid']}" /> <br />
-						</p>
-						<p>
-							<label>工作动态发布时间</label> <input
-								class="text-input medium-input datepicker" type="text"
-								id="medium-input" name="workTendencyReleaseDate"
-								disabled="disabled"
-								style="background-image: none; background-color: #ECE3E3"
-								value="{$workTendency['worktendencyreleasedate']}" /> <br />
-						</p>
-						<p>
-							<label>工作动态内容</label>
+							<label>活动实践内容</label>
 							<div style='height: 600px'>{$editorHtml}</div>
 						</p>
-
 						<p>
 							<input class="button" type="submit" value="确定" />
 						</p>
@@ -76,7 +59,6 @@
 					<div class="clear"></div>
 					<!-- End .clear -->
 				</form>
-				<!-- End #tab2 -->
 			</div>
 			<!-- End .content-box-content -->
 		</div>

@@ -5,27 +5,27 @@ namespace Admin\Controller;
 use Think\Controller;
 use FCKeditor\FCKeditor;
 
-class WorkTendencyController extends Controller {
+class NoticeController extends Controller {
 	
 	// public function _initialize(){
 	// if(!isset($_SESSION['userId'])){
 	// $this->error('请先登录 ! ');
 	// }
 	// }
-	public function allPage() {
+	public function allNotice() {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
-		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
-		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
-		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
-		$this->assign ( 'CURRENT_MENU', 'WORKTENDENCY' );
+		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
+		$this->assign('USER_ID',$_SESSION ['userId']);
+		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
+		$this->assign('CURRENT_MENU','NOTICE');
 		
-		$workTendency = M ( 'worktendency' );
+		$notice = M ( 'notice' );
 		try {
 			if (isset ( $_GET ['delete'] )) {
 				// 传入删除参数
-				$workTendency->where ( 'worktendencyid=' . $_GET ['delete'] )->delete ();
+				$notice->where ( 'noticeid=' . $_GET ['delete'] )->delete ();
 			}
 			if (isset ( $_GET ['deleteMulti'] )) {
 				// 传入删除多项的参数
@@ -33,7 +33,7 @@ class WorkTendencyController extends Controller {
 				for($index = 1; $index < count ( $multi ); $index ++) {
 					// 从第二个开始删除，第一个的产生是由于U方法生成参数的时候无法不输入一个参数
 					if ($multi [$index] != null) {
-						$workTendency->where ( 'worktendencyid=' . $multi [$index] )->delete ();
+						$notice->where ( 'noticeid=' . $multi [$index] )->delete ();
 					}
 				}
 			}
@@ -44,25 +44,38 @@ class WorkTendencyController extends Controller {
 		}
 		
 		// 查询当前所有的工作状态并且分页
-		$count = $workTendency->count ();
-		$page = new \Think\Page ( $count, C ( 'PAGE_COUNT' ), 'p1' );
+		$count = $notice->count ();
+		$page = new \Think\Page ( $count, C ( 'PAGE_COUNT' ),'p1' );
 		$page->setP ( 'p1' );
-		$orderby ['worktendencyid'] = 'desc';
-		$list = $workTendency->order ( $orderby )->limit ( $page->firstRow . ',' . $page->listRows )->select ();
+		$orderby ['noticeid'] = 'desc';
+		$list = $notice->order ( $orderby )->limit ( $page->firstRow . ',' . $page->listRows )->select ();
 		
-		$user = M ( 'user' );
+		$user = M ('user');
 		$listAllUser = $user->select ();
 		// 将人员id转换为名称
 		for($i = 0; $i < count ( $list ); $i ++) {
 			for($j = 0; $j < count ( $listAllUser ); $j ++) {
-				if ($list [$i] ['worktendencyreleaseid'] == $listAllUser [$j] ['userid']) {
-					$list [$i] ['worktendencyreleaseid'] = $listAllUser [$j] ['usernickname'];
+				if ($list [$i] ['noticereleaseid'] == $listAllUser [$j] ['userid']) {
+					$list [$i] ['noticereleaseid'] = $listAllUser [$j] ['usernickname'];
 				}
+				if ($list [$i] ['noticeauditid'] == $listAllUser [$j] ['userid']) {
+					$list [$i] ['noticeauditid'] = $listAllUser [$j] ['usernickname'];
+				}
+			}
+// 			$list [$i] ['activitypracticereleaseid'] = getUserNicknameByUserId($list [$i] ['activitypracticereleaseid']);
+// 			$list [$i] ['activitypracticeauditid'] = getUserNicknameByUserId($list [$i] ['activitypracticeauditid']);
+			
+			if($list [$i] ['noticeauditstatus'] == 0){
+				$list [$i] ['noticeauditstatus'] = '未审核';
+			}else{
+				$list [$i] ['noticeauditstatus'] = '通过审核';
 			}
 		}
 		
+		
 		$this->assign ( 'list', $list ); // 赋值数据集
 		$this->assign ( 'page', $page->show () ); // 赋值分页输出
+		
 		$editor = new \FCKeditor\FCKeditor ( 'editor' );
 		$editor->Value = ' '; // 设置默认值
 		$editorHtml = $editor->Createhtml (); // 创建。注意：若用到模板（如smarty）则$fck = $oFCKeditor->CreateHtml();然后把$fck抛给模板
@@ -70,76 +83,80 @@ class WorkTendencyController extends Controller {
 		$this->assign ( "editorHtml", $editorHtml );
 		$this->display ();
 	}
-	public function addWorkTendency() {
+	public function addNotice() {
 		try {
-			$workTendency = M ( 'worktendency' );
+			$notice = M ( 'notice' );
 			
-			$data ['workTendencyTitle'] = $_POST ['workTendencyTitle'];
-			$data ['workTendencyReleaseId'] = $_SESSION ['userId'];
-			$data ['workTendencyReleaseDate'] = date ( 'Y-m-d H:i:s', time () );
+			$data ['noticeTitle'] = $_POST ['noticeTitle'];
+			$data ['noticeReleaseId'] = $_SESSION ['userId'];
+			$data ['noticeReleaseDate'] = date ( 'Y-m-d H:i:s', time () );
+			$data ['noticePageView'] = 0;
+			$data ['noticeAuditStatus'] = 1;
+			$data ['noticeAuditId'] = $_SESSION['userId'];
+			$data ['noticeAuditDate'] = date ( 'Y-m-d H:i:s', time () );
+// 			dump($_POST ['editor']);
+// 			dump($data);
+// 			return ;
 			// $data['workTendencyReleaseDate'] = $_POST['workTendencyReleaseDate'];
 			// 创建内容的html文件
 			$myFilePath = C ( 'APPLICATION_CONTENTHTML_PATH' ) . '/' . time () . rand () . '.html';
 			$myFile = fopen ( $myFilePath, "w" ) or die ( "Unable to open file!" );
 			fwrite ( $myFile, $_POST ['editor'] );
 			fclose ( $myFile );
-			$data ['workTendencyContentURL'] = $myFilePath;
-			$data ['workTendencyReleaseInformation'] = '';
-			$data ['workTendencyPageView'] = 0;
+			$data ['noticeContentURL'] = $myFilePath;
+			$data ['noticeInformation'] = '';
 			
-			$workTendency->create ( $data );
-			$workTendency->add ();
+			$notice->create ( $data );
+			$notice->add ();
 			
-			$this->success ( C ( 'RELEASE_SUCCESS' ), 'allPage' );
+			$this->success ( C ( 'RELEASE_SUCCESS' ), 'allNotice' );
 		} catch ( Exception $e ) {
-			$this->error ( C ( 'RELEASE_FAIL' ) . $e->__toString (), 'allPage' );
+			$this->error ( C ( 'RELEASE_FAIL' ) . $e->__toString (), 'allNotice' );
 		}
 	}
-	public function editWorkTendency() {
+	public function editNotice() {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
-		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
-		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
-		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
-		$this->assign ( 'CURRENT_MENU', 'WORKTENDENCY' );
+		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
+		$this->assign('USER_ID',$_SESSION ['userId']);
+		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
+		$this->assign('CURRENT_MENU','NOTICE');
 		
-		$workTendency = M ( 'worktendency' );
-		$editWorkTendency = $workTendency->where ( 'workTendencyId=' . $_GET ['worktendencyid'] )->find ();
+		$notice = M ( 'notice' );
+		$editNotice = $notice->where ( 'noticeId=' . $_GET ['noticeid'] )->find ();
 		
-		// dump($editWorkTendency);
-		// echo $editWorkTendency['worktendencyreleasedate'];
+// 		dump($editNotice);
+// 		return;
 		
 		$editor = new \FCKeditor\FCKeditor ( 'editor' );
 		// 从contenturl中读取信息
-		$fileName = $editWorkTendency ['worktendencycontenturl'];
+		$fileName = $editNotice ['noticecontenturl'];
 		$myFile = fopen ( $fileName, "r" ) or die ( "Unable to open file!" );
 		$content = fread ( $myFile, filesize ( $fileName ) );
 		fclose ( $myFile );
 		$editor->Value = $content; // 设置默认值
 		$editorHtml = $editor->Createhtml (); // 创建。注意：若用到模板（如smarty）则$fck = $oFCKeditor->CreateHtml();然后把$fck抛给模板
 		
-		$editWorkTendency ['worktendencyreleaseid'] = getUserNicknameByUserId($editWorkTendency ['worktendencyreleaseid'] );
-		
 		$this->assign ( "editorHtml", $editorHtml );
 		
-		$this->assign ( 'workTendency', $editWorkTendency );
+		$this->assign ( 'notice', $editNotice );
 		$this->display ();
 	}
-	public function editWorkTendencySubmit() {
+	public function editNoticeSubmit() {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
-		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
-		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
-		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
-		$this->assign ( 'CURRENT_MENU', 'WORKTENDENCY' );
+		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
+		$this->assign('USER_ID',$_SESSION ['userId']);
+		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
+		$this->assign('CURRENT_MENU','NOTICE');
 		
-		$workTendency = M ( 'worktendency' );
-		$data ['workTendencyId'] = $_GET ['worktendencyid'];
-		$data ['workTendencyTitle'] = $_POST ['workTendencyTitle'];
-// 		$data ['workTendencyReleaseId'] = $_POST ['workTendencyReleaseId'];
-// 		$data ['workTendencyReleaseDate'] = date ( 'Y-m-d H:i:s', time () );
+		$notice = M ( 'notice' );
+		$data ['noticeId'] = $_GET ['noticeid'];
+		$data ['noticeTitle'] = $_POST ['noticeTitle'];
+// 		dump ($data);
+// 		return;
 		
 		// $workTendency-> where('worktendencyid=' . $_GET['worktendencyid'])->setField('worktendencytitle',$_POST['workTendencyTitle']);
 		// $workTendency-> where('worktendencyid=' . $_GET['worktendencyid'])->setField('worktendencyreleaseid',$_POST['workTendencyReleaseId']);
@@ -149,9 +166,9 @@ class WorkTendencyController extends Controller {
 		$myFile = fopen ( $myFilePath, "w" ) or die ( "Unable to open file!" );
 		fwrite ( $myFile, $_POST ['editor'] );
 		fclose ( $myFile );
-		$data ['workTendencyContentURL'] = $myFilePath;
+		$data ['noticeContentURL'] = $myFilePath;
 		// $workTendency-> where('workTendencyId=' . $_GET['worktendencyid'])->setField('worktendencycontenturl',$myFilePath);
-		$result = $workTendency->save ( $data );
+		$result = $notice->save ( $data );
 		if ($result !== false) {
 			// echo U('WorkTendency/allPage');
 			echo '

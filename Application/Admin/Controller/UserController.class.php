@@ -15,6 +15,9 @@ class UserController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+
+		doLog($_SESSION ['userId'],27,'Edit_User_Setting');
+		
 		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
 		$this->assign('USER_ID',$_SESSION ['userId']);
 		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
@@ -84,6 +87,8 @@ class UserController extends Controller {
 // 		return;
 		$result = $user->save ( $data );
 		if ($result !== false) {
+
+			doLog($_SESSION ['userId'],28,'Edit_User_Setting_Submit');
 			$this->success ( C ( 'EDIT_SUCCESS' ));
 		} else {
 			$this->error ( C ( 'EDIT_FAIL' ) );

@@ -14,6 +14,6 @@ class LogModel extends MongoModel {
 	);
 	protected $dbName='lnzm';//如果配置了全局配置,mongodb数据库和mysql数据库名称不一样的话,必须配置此项
 	protected $trueTableName = 'log';//数据表名
-	Protected $_idType = self::TYPE_INT; //参考手册
+	Protected $_idType = self::TYPE_STRING; //参考手册
 	protected $_autoinc = true;//参考手册
 }

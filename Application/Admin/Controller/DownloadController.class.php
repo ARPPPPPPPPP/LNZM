@@ -21,6 +21,8 @@ class DownloadController extends Controller {
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
 		$this->assign ( 'CURRENT_MENU', 'DOWNLAODSETTING' );
 		
+		doLog($_SESSION ['userId'],5,'view_allDownload');
+		
 		$download = M ( 'download' );
 		try {
 			if (isset ( $_GET ['delete'] )) {
@@ -104,7 +106,9 @@ class DownloadController extends Controller {
 			// return;
 			
 			$download->create ( $data );
-			$download->add ();
+			$addDownloadId = $download->add ();
+			
+			doLog($_SESSION ['userId'],6,'add_Download_Id_:_' . $addDownloadId);
 			
 			$this->success ( C ( 'RELEASE_SUCCESS' ), 'allDownload' );
 		} catch ( Exception $e ) {
@@ -119,6 +123,8 @@ class DownloadController extends Controller {
 		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
 		$this->assign ( 'CURRENT_MENU', 'WORKTENDENCY' );
+		
+		doLog($_SESSION ['userId'],7,'edit_Download_Id_:_' . $_GET ['downloadid']);
 		
 		$download = M ( 'download' );
 		$editDownload = $download->where ( 'downloadId=' . $_GET ['downloadid'] )->find ();
@@ -166,6 +172,9 @@ class DownloadController extends Controller {
 		                                                         // $upload->savePath = 'Download'; // 设置附件上传（子）目录
 		                                                         // 上传文件
 		$info = $upload->upload ();
+		
+		doLog($_SESSION ['userId'],8,'edit_Download_Submit_Id_:_' . $_GET ['downloadid']);
+		
 		if (! $info) { // 上传错误提示错误信息
 			echo '
 					<head>

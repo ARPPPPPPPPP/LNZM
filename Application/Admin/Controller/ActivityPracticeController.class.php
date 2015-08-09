@@ -16,6 +16,7 @@ class ActivityPracticeController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		doLog($_SESSION ['userId'],1,'view_allActivityPractice');
 		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
 		$this->assign('USER_ID',$_SESSION ['userId']);
 		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
@@ -110,9 +111,11 @@ class ActivityPracticeController extends Controller {
 			fclose ( $myFile );
 			$data ['activityPracticeContentURL'] = $myFilePath;
 			$data ['activityPracticeInformation'] = '';
-			
 			$activityPractice->create ( $data );
-			$activityPractice->add ();
+			$activityPracticeId = $activityPractice->add();
+// 			dump($activityPracticeId);
+// 			return;
+			doLog($_SESSION ['userId'],2,'add_allActivityPractice_Id_:_' . $activityPracticeId);
 			
 			$this->success ( C ( 'RELEASE_SUCCESS' ), 'allActivityPractice' );
 		} catch ( Exception $e ) {
@@ -130,6 +133,8 @@ class ActivityPracticeController extends Controller {
 		
 		$activityPractice = M ( 'activitypractice' );
 		$editActivityPractice = $activityPractice->where ( 'activityPracticeId=' . $_GET ['activitypracticeid'] )->find ();
+		
+		doLog($_SESSION ['userId'],3,'edit_allActivityPractice_Id_:_' . $_GET ['activitypracticeid']);
 		
 // 		dump($editActivityPractice);
 // 		return;
@@ -175,6 +180,9 @@ class ActivityPracticeController extends Controller {
 		$data ['activityPracticeContentURL'] = $myFilePath;
 		// $workTendency-> where('workTendencyId=' . $_GET['worktendencyid'])->setField('worktendencycontenturl',$myFilePath);
 		$result = $activityPractice->save ( $data );
+		
+		doLog($_SESSION ['userId'],4,'edit_allActivityPractice_Submit_Id_:_' . $_GET ['activitypracticeid']);
+		
 		if ($result !== false) {
 			// echo U('WorkTendency/allPage');
 			echo '

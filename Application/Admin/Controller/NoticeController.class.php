@@ -16,6 +16,8 @@ class NoticeController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		doLog($_SESSION ['userId'],11,'View_allNotice');
+		
 		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
 		$this->assign('USER_ID',$_SESSION ['userId']);
 		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
@@ -107,7 +109,9 @@ class NoticeController extends Controller {
 			$data ['noticeInformation'] = '';
 			
 			$notice->create ( $data );
-			$notice->add ();
+			$addNoticeId = $notice->add ();
+			
+			doLog($_SESSION ['userId'],12,'Add_notice_Id_:_' . $addNoticeId);
 			
 			$this->success ( C ( 'RELEASE_SUCCESS' ), 'allNotice' );
 		} catch ( Exception $e ) {
@@ -118,6 +122,9 @@ class NoticeController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		
+		doLog($_SESSION ['userId'],13,'Edit_notice_Id_:_' . $_GET ['noticeid']);
+		
 		$this->assign('APPLICATION_NAME',C('APPLICATION_NAME'));
 		$this->assign('USER_ID',$_SESSION ['userId']);
 		$this->assign('USER_LEVEL',$_SESSION ['userLevel']);
@@ -169,6 +176,9 @@ class NoticeController extends Controller {
 		$data ['noticeContentURL'] = $myFilePath;
 		// $workTendency-> where('workTendencyId=' . $_GET['worktendencyid'])->setField('worktendencycontenturl',$myFilePath);
 		$result = $notice->save ( $data );
+		
+		doLog($_SESSION ['userId'],14,'Edit_notice_submit_Id_:_' . $_GET ['noticeid']);
+		
 		if ($result !== false) {
 			// echo U('WorkTendency/allPage');
 			echo '

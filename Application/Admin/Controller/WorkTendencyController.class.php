@@ -16,6 +16,9 @@ class WorkTendencyController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		
+
+		doLog($_SESSION ['userId'],29,'View_All_WorkTendency');
 		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
 		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
@@ -88,8 +91,9 @@ class WorkTendencyController extends Controller {
 			$data ['workTendencyPageView'] = 0;
 			
 			$workTendency->create ( $data );
-			$workTendency->add ();
-			
+			$addWorkTendencyId = $workTendency->add ();
+
+			doLog($_SESSION ['userId'],30,'Add_WorkTendency_Id_:_' . $addWorkTendencyId);
 			$this->success ( C ( 'RELEASE_SUCCESS' ), 'allPage' );
 		} catch ( Exception $e ) {
 			$this->error ( C ( 'RELEASE_FAIL' ) . $e->__toString (), 'allPage' );
@@ -121,6 +125,8 @@ class WorkTendencyController extends Controller {
 		
 		$editWorkTendency ['worktendencyreleaseid'] = getUserNicknameByUserId($editWorkTendency ['worktendencyreleaseid'] );
 		
+
+		doLog($_SESSION ['userId'],31,'Edit_WorkTendency_Id_:_' . $_GET ['worktendencyid']);
 		$this->assign ( "editorHtml", $editorHtml );
 		
 		$this->assign ( 'workTendency', $editWorkTendency );
@@ -154,6 +160,8 @@ class WorkTendencyController extends Controller {
 		$result = $workTendency->save ( $data );
 		if ($result !== false) {
 			// echo U('WorkTendency/allPage');
+
+			doLog($_SESSION ['userId'],32,'Edit_WorkTendency_Submit_Id_:_' . $_GET ['worktendencyid']);
 			echo '
 					<head>
 						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

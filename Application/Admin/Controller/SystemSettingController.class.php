@@ -9,6 +9,9 @@ class SystemSettingController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		
+		doLog($_SESSION ['userId'],15,'View_allOrganization');
+		
 		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
 		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
@@ -101,7 +104,9 @@ class SystemSettingController extends Controller {
 		$data ['academyDescription'] = $_POST ['academyDescription'];
 		
 		$academy->create ( $data );
-		if ($academy->add ()) {
+		$addAcademyId = $academy->add ();
+		if ($addAcademyId) {
+			doLog($_SESSION ['userId'],16,'Add_Academy_Id_:_' . $addAcademyId);
 			$this->success ( C ( 'ADD_SUCCESS' ), 'organizationSystemSetting' );
 		} else {
 			$this->error ( C ( 'ADD_FAIL' ), 'organizationSystemSetting' );
@@ -111,6 +116,7 @@ class SystemSettingController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		doLog($_SESSION ['userId'],17,'Edit_Academy_Id_:_' . $_GET ['academyid']);
 		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
 		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
 		
@@ -142,6 +148,8 @@ class SystemSettingController extends Controller {
 		$result = $academy->save ( $data );
 		if ($result !== false) {
 			// echo U('WorkTendency/allPage');
+			doLog($_SESSION ['userId'],18,'Edit_Academy_Submit_Id_:_' . $_GET ['academyid']);
+			
 			echo '
 					<head>
 						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -165,6 +173,7 @@ class SystemSettingController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		
 		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
 		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
@@ -180,7 +189,9 @@ class SystemSettingController extends Controller {
 		// return;
 		
 		$branch->create ( $data );
-		if ($branch->add ()) {
+		$addBranchId = $branch->add ();
+		if ($addBranchId) {
+			doLog($_SESSION ['userId'],19,'Add_Branch_Id_:_' . $addBranchId);
 			$this->success ( C ( 'ADD_SUCCESS' ), 'organizationSystemSetting' );
 		} else {
 			$this->error ( C ( 'ADD_FAIL' ), 'organizationSystemSetting' );
@@ -194,6 +205,8 @@ class SystemSettingController extends Controller {
 		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
 		$this->assign ( 'CURRENT_MENU', 'SYSTEMSETTING' );
+		
+		doLog($_SESSION ['userId'],20,'Edit_Branch_Id_:_' . $_GET ['branchid']);
 		
 		$branch = M ( 'branch' );
 		$academy = M ( 'academy' );
@@ -227,6 +240,7 @@ class SystemSettingController extends Controller {
 		$result = $branch->save ( $data );
 		if ($result !== false) {
 			// echo U('WorkTendency/allPage');
+			doLog($_SESSION ['userId'],21,'Edit_Branch_Submit_Id_:_' . $_GET ['branchid']);
 			echo '
 					<head>
 						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -250,6 +264,8 @@ class SystemSettingController extends Controller {
 		if (! isset ( $_SESSION ['userId'] )) {
 			$this->error ( C ( 'LOGIN_FIRST' ) );
 		}
+		
+		doLog($_SESSION ['userId'],22,'View_AccountSetting');
 		$this->assign ( 'APPLICATION_NAME', C ( 'APPLICATION_NAME' ) );
 		$this->assign ( 'USER_ID', $_SESSION ['userId'] );
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
@@ -349,9 +365,12 @@ class SystemSettingController extends Controller {
 // 		return;
 		
 		$user->create ( $data );
-		if ($user->add ()) {
+		$addUserId = $user->add ();
+		if ($addUserId) {
+			doLog($_SESSION ['userId'],23,'Add_User_id_:_' . $addUserId);
 			$this->success ( C ( 'ADD_SUCCESS' ), 'accountSetting' );
 		} else {
+			doLog($_SESSION ['userId'],24,'Add_User_Fail');
 			$this->error ( C ( 'ADD_FAIL' ), 'accountSetting' );
 		}
 	}
@@ -364,7 +383,8 @@ class SystemSettingController extends Controller {
 		$this->assign ( 'USER_LEVEL', $_SESSION ['userLevel'] );
 		$this->assign ( 'CURRENT_MENU', 'SYSTEMSETTING' );
 	
-
+		doLog($_SESSION ['userId'],25,'Edit_User_id_:_' . $_GET ['userid']);
+		
 		$user = M ( 'user' );
 		$editUser = $user->where ( 'userId=' . $_GET ['userid'] )->find ();
 		
@@ -411,7 +431,9 @@ class SystemSettingController extends Controller {
 		// return;
 		$result = $user->save ( $data );
 		if ($result !== false) {
-			// echo U('WorkTendency/allPage');
+			// echo U('WorkTendency/allPage');	
+			doLog($_SESSION ['userId'],26,'Edit_User_Submit_id_:_' . $_GET ['userid']);
+			
 			echo '
 					<head>
 						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

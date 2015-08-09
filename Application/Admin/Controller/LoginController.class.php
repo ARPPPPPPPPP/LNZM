@@ -31,10 +31,15 @@ class LoginController extends Controller {
 			session ( 'userId', $tempUser[0]['userid'] );
 			session ( 'userLevel', $tempUser[0]['userlevel'] );
 			
+			doLog(0,9,'Login_success_account_:_' . $_POST['account']);
+			
 			$this->success ( C ( 'LOGIN_SUCCESS' ), 'home' );
 		} else {
 			// 登录失败
 			// echo "false";
+			
+			doLog(0,10,'Login_fail_account_:_' . $_POST['account']);
+			
 			$this->error ( C ( 'LOGIN_FAIL' ) );
 		}
 	}
@@ -49,7 +54,9 @@ class LoginController extends Controller {
 		$this->display ();
 	}
 	public function logout() {
+		doLog(0,10,'Logout_account_:_' . $_SESSION['userAccount']);
 		session ( 'userAccount', null );
+		
 		$this->success ( '退出成功', 'login' );
 	}
 }

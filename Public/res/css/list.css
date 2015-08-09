@@ -1,20 +1,22 @@
 /*内容区*/
 #content{
     margin-top:25px;
-    height: 400px;
-    background: url(../img/list_body.png) no-repeat;
+    height: 430px;
 }
 
 .list_title{
-
-
     font-size: 20px;
     font-weight: 400;
     height: 50px;
     line-height: 50px;
-    text-indent: 20px;
+    text-indent: 25px;
+    background: url(../img/list_title.png) no-repeat;
+    color:#ffffff;
 }
-
+.list_body{
+    height:380px;
+    background: url(../img/list_body.png) no-repeat #FDE8D8;
+}
 .list_body a{
     background:url(../img/q.gif) no-repeat 62px 15px;
     text-indent: 70px;
@@ -43,6 +45,7 @@
     background-color:#ed1941;
     text-align: center;
     line-height: 25px;
+    font-size: 15px;
 }
 .lnzm_page .current{
     color:#ffffff;

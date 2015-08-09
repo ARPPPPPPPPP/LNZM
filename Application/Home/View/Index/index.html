@@ -59,16 +59,15 @@
 		<div class="area left">
 			<div class="info_title">
 				<b class="left">通知公告</b>
-				<a href=""><span class="right">更多>></span></a>
+				<a href="{:U('Notice/showlist')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
 				<ul>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
+					<foreach name="listNotice" item="item">
+						<li>
+							<a href="{:U('Notice/showContent','noticeid=' . $item[noticeid])}">{$item[noticetitle]}</a>
+						</li>
+					</foreach>
 				</ul>
 			</div>
 		</div>
@@ -91,7 +90,7 @@
 		<div class="area left">
 			<div class="info_title">
 				<b class="left">支部风采</b>
-				<a href=""><span class="right">更多>></span></a>
+				<a href="{:U('Branch/showlist')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
 				<ul>

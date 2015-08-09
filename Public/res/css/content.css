@@ -6,11 +6,15 @@
     letter-spacing: 3px;
     line-height: 25px;
 }
+.content_head{
+    height: 25px;
+    background: url(../img/content_bg.png) no-repeat;
+}
 
 .article{
     width: 880px;
-    padding: 10px 40px 0 40px;
-    background-color: #ffffff;
+    padding: 0 40px 0 40px;
+    background-color: #F8F8F8;
 }
 
 .back{

@@ -73,7 +73,8 @@
 
 .info_body{
     width: 100%;
-    height:184px;
+    height:179px;
+    padding-top: 5px;
     background: url(../img/area-body.png) no-repeat;
 }
 .info_body a{

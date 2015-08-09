@@ -17,7 +17,7 @@ class PatrioticController extends  Controller{
     }
 
     //在广东
-    function places(){
+    function fullText(){
         $this->display();
     }
 

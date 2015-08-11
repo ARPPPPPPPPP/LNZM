@@ -6,15 +6,21 @@
     letter-spacing: 3px;
     line-height: 25px;
 }
-.content_head{
-    height: 25px;
+.article_title{
+    height: 50px;
     background: url(../img/content_bg.png) no-repeat;
+    text-align: center;
+    font-size: 20px;
+    line-height: 50px;
 }
 
-.article{
+.article_body{
     width: 880px;
     padding: 0 40px 0 40px;
     background-color: #F8F8F8;
+}
+.article_info{
+    text-align: center;
 }
 
 .back{

@@ -27,17 +27,45 @@ class NoticeController extends  Controller{
         $this->display();
     }
 
-    function showContent(){
-        $noticeModel=M('notice');
-        $notice=$noticeModel->where('noticeid='.$_GET['noticeid']);
-        $fileName = $notice->getField('noticecontenturl');
-        $myFile = fopen ( $fileName, "r" ) or die ( "Unable to open file!" );
-        $content = fread ( $myFile, filesize ( $fileName ) );
-        fclose ( $myFile );
-        $data['noticeId']=$notice->getField('noticeid');
-        $data['noticePageView']=$notice->getField('noticepageview')+1;
+    function showContent()
+    {
+        $noticeModel = M('notice');
+        $userModel = M('user');
+        $notice = $noticeModel->where('noticeid=' . $_GET['noticeid'])->find();
+
+//        dump($notice->getField('noticeid'));
+//        return;
+
+//        dump($notice['noticereleaseid']);
+//        dump($notice['noticeid']);
+//        return;
+
+
+        $date = $notice['noticereleasedate']; //日期
+//        dump($notice->getField('noticeid'));
+//        return;
+        $title = $notice['noticetitle'];//标题
+        $fileName = $notice['noticecontenturl'];
+        $myFile = fopen($fileName, "r") or die ("Unable to open file!");
+        $content = fread($myFile, filesize($fileName));
+        fclose($myFile);
+        $data['noticeId'] = $notice['noticeid'];
+        $data['noticePageView'] = $notice['noticepageview'] + 1;
         $noticeModel->save($data);
-        $this->assign("content",$content);
+
+
+        $user = $userModel->where('userid=' . $notice['noticereleaseid'])->find();
+        $name = $user['usernickname'];   //来源
+
+
+        $this->assign("content", $content);
+        $this->assign("date", $date);
+        $this->assign("name", $name);
+        $this->assign("title", $title);
+
+
+
+
         $this->display();
     }
 

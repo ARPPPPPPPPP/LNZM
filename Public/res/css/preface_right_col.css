@@ -10,14 +10,11 @@
 
 .right_col{
     width:730px;
-    height: 1730px;
     margin-bottom: 25px;
     letter-spacing: 3px;
     background: url(../img/introduction_bg.png) no-repeat ;
 }
-.right_col_content p{
-    text-indent: 2em;
-}
+
 .right_col_title{
     text-align:right;
     padding-top: 15px;
@@ -29,8 +26,9 @@
     margin:0 auto;
     color:#393636;
 }
-
-.right_col_content span{
-    height: 30px;
+.right_col_content p{
+    text-indent: 2em;
+    font-size:12px;
     line-height: 30px;
 }
+

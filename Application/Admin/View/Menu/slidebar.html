@@ -6,17 +6,21 @@
 	<!-- Sidebar Profile links -->
 	<div id="profile-links">
 		您好, <a href="{:U('User/userSetting','userid=' . $USER_ID)}"
-			title="Edit your profile">{:session('userAccount')} ! </a><br /> <br />
+			title="Edit your profile">{:session('userNickname')} ! </a><br /> <br />
 		<a href="{:U('User/userSetting','userid=' . $USER_ID)}"
 			title="View the Site">个人信息设置</a> | <a href="{:U('Login/logout')}"
 			title="Sign Out">登出</a>
 	</div>
 	<ul id="main-nav">
+	<li><a href="{:U('Login/home')}"<if
+					condition="$CURRENT_MENU eq 'HOME'">
+				class="nav-top-item no-submenu current" <else />
+				class="nav-top-item no-submenu" </if>>首页</a></li>
 		<li><a href="{:U('WorkTendency/allPage')}"<if
 					condition="$CURRENT_MENU eq 'WORKTENDENCY'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>工作动态</a></li>
-
+		<!-- 
 		<li><a href="#"<if condition="$CURRENT_MENU eq '专题建设'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>专题建设</a>
@@ -26,13 +30,25 @@
 				<li><a href="#">在这里追求富强</a></li>
 				<li><a href="#">在这里勇于担当</a></li>
 			</ul></li>
-		<li><a href="{:U('Notice/allNotice')}"<if condition="$CURRENT_MENU eq 'NOTICE'">
+			 -->
+		<li><a href="#"<if
+					condition="($CURRENT_MENU eq 'NOTICE') OR ($CURRENT_MENU eq 'NOTICEORANGIZATIONAUDIT')">
 				class="nav-top-item no-submenu current" <else />
-				class="nav-top-item no-submenu" </if>>通知公告</a></li>
-		<li><a href="{:U('ActivityPractice/allActivityPractice')}"<if condition="$CURRENT_MENU eq 'ACTIVITYPRACTICE'">
+				class="nav-top-item no-submenu" </if>>通知公告</a>
+			<ul>
+				<li><a href="{:U('Notice/allNotice')}"<if
+							condition="$CURRENT_MENU eq 'NOTICE'"> class="current" <else />
+						class="" </if>>所有通知公告</a></li>
+				<li><a href="#"<if
+							condition="$CURRENT_MENU eq 'NOTICEORANGIZATIONAUDIT'">
+						class="current" <else /> class="" </if>>审核通知公告</a></li>
+			</ul></li>
+		<li><a href="{:U('ActivityPractice/allActivityPractice')}"<if
+					condition="$CURRENT_MENU eq 'ACTIVITYPRACTICE'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>活动实践</a></li>
-		<li><a href="#"<if condition="$CURRENT_MENU eq '支部风采'">
+		<li><a href="{:U('BranchApperance/allBranchApperance')}"<if
+					condition="$CURRENT_MENU eq 'BRANCHAPPERANCE'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>支部风采</a></li>
 		<li><a href="{:U('Download/allDownload')}"<if

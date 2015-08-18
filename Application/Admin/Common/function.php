@@ -11,6 +11,7 @@ function getUserNicknameByUserId($userId) {
 	
 	return '';
 }
+
 // function writeLog($userId) {
 // writeLog ( $userId, 0);
 // }

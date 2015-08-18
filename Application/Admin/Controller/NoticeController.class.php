@@ -90,6 +90,7 @@ class NoticeController extends Controller {
 			$notice = M ( 'notice' );
 			
 			$data ['noticeTitle'] = $_POST ['noticeTitle'];
+			$data ['noticeInformation'] = C('ORANGIZATION');
 			$data ['noticeReleaseId'] = $_SESSION ['userId'];
 			$data ['noticeReleaseDate'] = date ( 'Y-m-d H:i:s', time () );
 			$data ['noticePageView'] = 0;

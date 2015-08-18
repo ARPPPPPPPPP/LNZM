@@ -30,6 +30,8 @@ class LoginController extends Controller {
 			session ( 'userAccount', $tempUser[0]['useraccount'] );
 			session ( 'userId', $tempUser[0]['userid'] );
 			session ( 'userLevel', $tempUser[0]['userlevel'] );
+			session ( 'userNickname', $tempUser[0]['usernickname'] );
+			
 			
 			doLog(0,9,'Login_success_account_:_' . $_POST['account']);
 			

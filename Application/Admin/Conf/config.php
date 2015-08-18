@@ -20,4 +20,7 @@ return array (
 		'PAGE_COUNT' => 5,
 		'ADD_SUCCESS' => '添加成功 ! ',
 		'ADD_FAIL' => '添加失败 ! ',
+		
+		//发布人信息
+		'ORANGIZATION' => '组织部',
 );

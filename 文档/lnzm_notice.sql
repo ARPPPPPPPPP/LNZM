@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-08-08 11:22:25
+Date: 2015-08-09 20:32:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,4 +32,4 @@ CREATE TABLE `lnzm_notice` (
   `noticeAuditDate` datetime DEFAULT NULL,
   `noticeType` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`noticeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;

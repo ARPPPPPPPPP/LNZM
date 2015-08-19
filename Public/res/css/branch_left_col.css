@@ -1,0 +1,101 @@
+/*内容区*/
+#content{
+    margin-top:20px;
+    margin-bottom: 20px;
+    height: 400px;
+}
+/*左边栏*/
+.left_col{
+    width: 200px;
+    height:400px;
+    text-align: center;
+    background: url(../img/left_col.png) no-repeat 0 50px;
+
+}
+.left_col_title{
+    width: 100%;
+    height:50px;
+    line-height: 50px;
+    font-size:20px;
+    background:url(../img/left_col_title.png) no-repeat;
+    color:#FFFFFF;
+}
+.left_col_items{
+    width: 200px;
+    margin:0 auto;
+    font-size:18px;
+    height:350px;
+    overflow: hidden;
+}
+
+.left_col_items ul{
+    display: block;
+    width: 100%;
+
+}
+.left_col_items ul a{
+    display: block;
+    height:35px;
+    line-height: 35px;
+
+}
+.left_col_items ul a:hover{
+    cursor: pointer;
+    background-color: #C5130A;
+    color:#FFFFFF;
+}
+.left_col_items .active{
+    background: url(../img/q.gif) no-repeat 20px 14px;
+}
+.left_col_items .active a{
+    color:red;
+}
+
+/*分页*/
+.lnzm_small_page{
+    width: 100%;
+    height: 35px;
+    line-height:35px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.lnzm_small_page a{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+.lnzm_page{
+    margin-top: 10px;
+    height: 40px;
+}
+.lnzm_page div{
+    height: 40px;
+    float:right;
+}
+.lnzm_page a{
+    display: block;
+    float:left;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    background-color:#ed1941;
+    text-align: center;
+    line-height: 25px;
+    font-size: 15px;
+}
+.lnzm_page span{
+    display: block;
+    float:left;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    background-color:#ed1941;
+    text-align: center;
+    line-height: 25px;
+    font-size: 15px;
+}
+.lnzm_page .current{
+    color:#ffffff;
+}

@@ -13,6 +13,7 @@
     background: url(../img/list_title.png) no-repeat;
     color:#ffffff;
 }
+
 .list_body{
     height:380px;
     background: url(../img/list_body.png) no-repeat #FDE8D8;
@@ -36,7 +37,18 @@
     height: 40px;
     float:right;
 }
-.lnzm_page a,span{
+.lnzm_page a{
+    display: block;
+    float:left;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    background-color:#ed1941;
+    text-align: center;
+    line-height: 25px;
+    font-size: 15px;
+}
+.lnzm_page span{
     display: block;
     float:left;
     height: 25px;

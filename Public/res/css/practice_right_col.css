@@ -11,7 +11,7 @@
     height:50px;
     line-height: 50px;
     font-size:20px;
-    background:url(../img/right_col_title.png)no-repeat;
+    background:url(../img/right_col_title.png) no-repeat 0 0 #FDE8D8;
     color:#FFFFFF;
     text-indent: 20px;
 }
@@ -25,8 +25,41 @@
     display: block;
     height: 30px;
     line-height: 30px;
-    background: url(../img/q.gif) no-repeat 20px 10px;
+    background: url(../img/q.gif) no-repeat 20px 12px;
 }
-
+/*分页*/
+.lnzm_page{
+    margin-top: 10px;
+    height: 40px;
+}
+.lnzm_page div{
+    height: 40px;
+    float:right;
+}
+.lnzm_page a{
+    display: block;
+    float:left;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    background-color:#ed1941;
+    text-align: center;
+    line-height: 25px;
+    font-size: 15px;
+}
+.lnzm_page span{
+    display: block;
+    float:left;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    background-color:#ed1941;
+    text-align: center;
+    line-height: 25px;
+    font-size: 15px;
+}
+.lnzm_page .current{
+    color:#ffffff;
+}
 
 

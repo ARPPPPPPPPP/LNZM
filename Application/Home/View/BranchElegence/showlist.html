@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>支部风采</title>
     <load href="__PUBLIC__/res/css/global.css" />
-    <load href="__PUBLIC__/res/css/left_col.css" />
+    <load href="__PUBLIC__/res/css/branch_left_col.css" />
     <load href="__PUBLIC__/res/css/practice_right_col.css" />
     <load href="__PUBLIC__/res/js/jquery-1.11.3.min.js" />
 </head>
@@ -22,38 +22,39 @@
         </div>
         <div class="left_col_items">
             <ul>
-                <li><a href="{:U('PracticalActivities/socialPractice')}">计算机学院</a></li>
-                <li class="active"><a href="{:U('PracticalActivities/voluntaryService')}">软件学院</a></li>
+                <foreach name="currentAcademy" item="item">
+                    <li class="active"><a href="{:U('BranchElegence/showlist','branchapperanceacademy=' . $item[academyname])}">{$item[academyname]}</a></li>
+                </foreach>
+                <foreach name="listAcademy" item="item">
+                    <if condition="$item.academyname neq $title">
+                       <li><a href="{:U('BranchElegence/showlist','branchapperanceacademy=' . $item[academyname])}">{$item[academyname]}</a></li>
+                    </if>
+                </foreach>
             </ul>
+            <div class="lnzm_small_page">{$pageAcademy}</div>
         </div>
     </div>
     <!--END-->
 
     <!--右边栏-->
     <div class="right_col right">
-        <div class="right_col_title">支部风采</div>
+        <div class="right_col_title">{$title}</div>
         <div class="right_col_lists">
             <ul class="right_col_list">
-                <li><a href="">新闻1</a></li>
-                <li><a href="">新闻2</a></li>
-                <li><a href="">新闻3</a></li>
-                <li><a href="">新闻4</a></li>
-                <li><a href="">新闻5</a></li>
-                <li><a href="">新闻6</a></li>
-                <li><a href="">新闻7</a></li>
-                <li><a href="">新闻8</a></li>
-                <li><a href="">新闻9</a></li>
-                <li><a href="">新闻10新闻10新闻10新闻10新闻10新闻10新闻10新闻10新闻10新闻10</a></li>
+                <foreach name="listApperance" item="item">
+                    <li><a href="{:U('BranchElegence/showContent','branchapperanceid=' . $item[branchapperanceid])}">【{$item[branchapperancebranch]}】{$item[branchapperancetitle]}</a></li>
+                </foreach>
             </ul>
         </div>
     </div>
     <!--END-->
 </div>
 <!--END-->
-
+<div class="lnzm_page comWidth">{$pageApperance}</div>
 <!--底部-->
 <include file="Layout/footer"/>
 <!--END-->
 <load href="__PUBLIC__/res/js/nav.js" />
+
 </body>
 </html>

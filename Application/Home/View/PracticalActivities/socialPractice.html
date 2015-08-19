@@ -41,23 +41,18 @@ END-->
         <div class="right_col_title">社会实践</div>
         <div class="right_col_lists">
             <ul class="right_col_list">
-                <li><a href="">新闻1</a></li>
-                <li><a href="">新闻2</a></li>
-                <li><a href="">新闻3</a></li>
-                <li><a href="">新闻4</a></li>
-                <li><a href="">新闻5</a></li>
-                <li><a href="">新闻6</a></li>
-                <li><a href="">新闻7</a></li>
-                <li><a href="">新闻8</a></li>
-                <li><a href="">新闻9</a></li>
-                <li><a href="">新闻10新闻10新闻10新闻10新闻10新闻10新闻10新闻10新闻10新闻10</a></li>
+                <foreach name="list" item="item">
+                    <li>
+                        <a href="{:U('PracticalActivities/showContent','activitypracticeid=' . $item[activitypracticeid])}">{$item[activitypracticetitle]}</a>
+                    </li>
+                </foreach>
             </ul>
         </div>
     </div>
     <!--END-->
 </div>
 <!--END-->
-
+<div class="lnzm_page comWidth">{$page}</div>
 <!--引入底部-->
 <include file="Layout/footer"/>
 <!--END-->

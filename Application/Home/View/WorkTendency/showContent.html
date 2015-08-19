@@ -13,10 +13,15 @@
 
 <!--内容区-->
 <div id="content" class="comWidth">
-    <div class="content_head"></div>
-        <div class="article">
-            {$content}
+    <div class="article_title">
+        {$title}
+    </div>
+    <div class="article_body">
+        <div class="article_info">
+            <p>发布时间：{$date} &nbsp;&nbsp;来源：{$name}</p>
         </div>
+        {$content}
+    </div>
 </div>
 <!--END-->
 

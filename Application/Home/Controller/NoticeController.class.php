@@ -20,7 +20,7 @@ class NoticeController extends  Controller{
         $page=new \Think\Page($count,10,'p1');
         $page->setP('p1');
         $orderby ['noticeid'] = 'desc';
-        $list = $notice->order ( $orderby )->limit ( $page->firstRow . ',' . $page->listRows )->select ();
+        $list = $notice->where('noticeAuditId=1')->order ( $orderby )->limit ( $page->firstRow . ',' . $page->listRows )->select ();
 
         $this->assign ( 'list', $list ); // 赋值数据集
         $this->assign ( 'page', $page->show () ); // 赋值分页输出
@@ -32,27 +32,16 @@ class NoticeController extends  Controller{
         $noticeModel = M('notice');
         $userModel = M('user');
         $notice = $noticeModel->where('noticeid=' . $_GET['noticeid'])->find();
-
-//        dump($notice->getField('noticeid'));
-//        return;
-
-//        dump($notice['noticereleaseid']);
-//        dump($notice['noticeid']);
-//        return;
-
-
         $date = $notice['noticereleasedate']; //日期
-//        dump($notice->getField('noticeid'));
-//        return;
         $title = $notice['noticetitle'];//标题
         $fileName = $notice['noticecontenturl'];
         $myFile = fopen($fileName, "r") or die ("Unable to open file!");
         $content = fread($myFile, filesize($fileName));
         fclose($myFile);
+
         $data['noticeId'] = $notice['noticeid'];
         $data['noticePageView'] = $notice['noticepageview'] + 1;
         $noticeModel->save($data);
-
 
         $user = $userModel->where('userid=' . $notice['noticereleaseid'])->find();
         $name = $user['usernickname'];   //来源

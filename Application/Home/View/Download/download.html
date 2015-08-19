@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>下载专区</title>
+    <title>下载专区列表页</title>
     <load href="__PUBLIC__/res/css/global.css" />
     <load href="__PUBLIC__/res/css/download.css" />
     <load href="__PUBLIC__/res/js/jquery-1.11.3.min.js"/>
@@ -12,14 +12,28 @@
 <include file="Layout/header"/>
 
 <!--内容区-->
-<div id="content" class="comWidth">
 
+<div id="content" class="comWidth">
+    <div class="list_title">
+        下载专区
+    </div>
+    <div class="list_body">
+        <ul>
+            <foreach name="list" item="item">
+               <li>
+                   <a href="__PUBLIC__/Download/{$item[downloadreleasedate]|substr=0,10}/{$item[downloadurl]}">{$item[filename]}</a>
+                     <div class="download_info">
+                       <p>【{$item[downloadreleasedate]}】</p>
+                         <a href="__PUBLIC__/Download/{$item[downloadreleasedate]|substr=0,10}/{$item[downloadurl]}"></a>
+                   </div>
+               </li>
+            </foreach>
+        </ul>
+    </div>
 </div>
+<div class="lnzm_page comWidth">{$page}</div>
 <!--END-->
 
-<div class="comWidth" style="height:35px;">
-    <a href="{:U('WorkTendency/showList')}"><span class="back right"></span></a>
-</div>
 
 <!--引入底部文件-->
 <include file="Layout/footer"/>

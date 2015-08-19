@@ -78,28 +78,29 @@
 			</div>
 			<div class="info_body">
 				<ul>
-					<li><a href="">广州市天河区五山路381号/广州市番禺区广州大学城邮政编码</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
+					<foreach name="listActivity" item="item">
+						<li>
+							<a href="{:U('PracticalActivities/showContent','activitypracticeid=' . $item[activitypracticeid])}">
+								<if condition="$item[activitypracticetype] eq 0">【社会实践】
+									<else />【志愿服务】
+								</if>
+								{$item[activitypracticetitle]}
+							</a>
+						</li>
+					</foreach>
 				</ul>
 			</div>
 		</div>
 		<div class="area left">
 			<div class="info_title">
 				<b class="left">支部风采</b>
-				<a href="{:U('Branch/showlist')}"><span class="right">更多>></span></a>
+				<a href="{:U('BranchElegence/showlist','branchapperanceacademy=计算机科学与工程')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
 				<ul>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
-					<li><a href="">链接</a></li>
+					<foreach name="listApperance" item="item">
+						<li><a href="{:U('BranchElegence/showContent','branchapperanceid=' . $item[branchapperanceid])}">【{$item[branchapperancebranch]}】{$item[branchapperancetitle]}</a></li>
+					</foreach>
 				</ul>
 			</div>
 		</div>
@@ -129,7 +130,7 @@
 						微博关注
 					</div>
 				</a>
-				<a href="">
+				<a href="{:U('Download/app')}">
 					<img src="__PUBLIC__/res//img/b_app.png" alt="app下载"/>
 					<div class="bar">
 						app下载
@@ -144,7 +145,7 @@
 						微信关注
 					</div>
 				</a>
-				<a href="">
+				<a href="{:U('Admin/Login/login')}">
 					<img src="__PUBLIC__/res//img/b_backstage.png" alt="后台登录"/>
 					<div class="bar">
 						后台登录

@@ -11,12 +11,23 @@ class IndexController extends Controller {
         //通知公告
         $notice = M ( 'notice' );
         $noticeorderby['noticeid'] = 'desc';
-        $listNotice=$notice->order($noticeorderby)->limit(6)->select();
+        $listNotice=$notice->where('noticeAuditId=1')->order($noticeorderby)->limit(6)->select();
 
+        //活动实践
+        $activitypractice=M('activitypractice');
+        $activitypracticeorderby['activitypracticeid']='desc';
+        $listActivity=$activitypractice->where('activitypracticeauditstatus=1')->order ( $activitypracticeorderby )->limit (6)->select ();
 
+        //支部通知
+        $apperance=M('branchapperance');
+        $apperanceorderby['branchapperanceid']='desc';
+        $listApperance=$apperance->where('branchapperanceacademyauditstatus=1')->order($apperanceorderby)->limit(6)->select();
 
     	$this->assign('listWorkTendency',$listWorkTendency);
         $this->assign('listNotice',$listNotice);
+        $this->assign("listActivity",$listActivity);
+        $this->assign("listApperance",$listApperance);
+
         $this->display();
     }
     

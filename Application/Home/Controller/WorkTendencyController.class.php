@@ -29,16 +29,26 @@ class WorkTendencyController extends  Controller{
 
     //显示正文页
     function showContent(){
-        $workTendencyModel=M('worktendency');
-        $workTendency=$workTendencyModel->where('worktendencyid='.$_GET['worktendencyid']);
-        $fileName = $workTendency->getField('worktendencycontenturl');
+        $model=M('worktendency');
+        $userModel=M('user');
+        $record=$model->where('worktendencyid='.$_GET['worktendencyid'])->find();
+        $user=$userModel->where('userid='.$record['worktendencyreleaseid'])->find();
+
+        $fileName=$record['worktendencycontenturl'];
         $myFile = fopen ( $fileName, "r" ) or die ( "Unable to open file!" );
         $content = fread ( $myFile, filesize ( $fileName ) );
         fclose ( $myFile );
-        $data['workTendencyId']=$workTendency->getField('worktendencyid');
-        $data['workTendencyPageView']=$workTendency->getField('worktendencypageview')+1;
-        $workTendencyModel->save($data);
-        $this->assign("content",$content);
+
+        $this->assign("content", $content);
+        $this->assign("date", $record['worktendencyreleasedate']);
+        $this->assign("name", $user['usernickname']);
+        $this->assign("title", $record['worktendencytitle']);
+
+        //统计
+        $data['workTendencyId'] = $record['worktendencyid'];
+        $data['workTendencyPageView'] = $record['worktendencypageview'] + 1;
+        $model->save($data);
+
         $this->display();
     }
 }

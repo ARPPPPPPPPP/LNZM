@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-08-09 01:16:58
+Date: 2015-08-09 20:35:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,12 +53,14 @@ CREATE TABLE `lnzm_activitypractice` (
   `activityPracticeAuditDate` datetime DEFAULT NULL,
   `activityPracticeType` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`activityPracticeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lnzm_activitypractice
 -- ----------------------------
 INSERT INTO `lnzm_activitypractice` VALUES ('5', '这里是活动实践编辑测试，现在我们需要测试一个名字长一点的活动实践', '', '1', '2015-08-07 21:08:49', './Public/contentHtml/143900356223032.html', '0', '1', '1', '2015-08-07 21:08:49', '0');
+INSERT INTO `lnzm_activitypractice` VALUES ('6', '1234', '', '1', '2015-08-09 15:11:38', './Public/contentHtml/143910672730301.html', '0', '1', '1', '2015-08-09 15:11:38', '0');
+INSERT INTO `lnzm_activitypractice` VALUES ('7', '1234', '', '1', '2015-08-09 15:56:08', './Public/contentHtml/14391069685283.html', '0', '1', '1', '2015-08-09 15:56:08', '0');
 
 -- ----------------------------
 -- Table structure for lnzm_branch
@@ -82,6 +84,32 @@ INSERT INTO `lnzm_branch` VALUES ('8', '计科三班', '16', '南校区', null);
 INSERT INTO `lnzm_branch` VALUES ('9', '环工一班', '3', '南校区', null);
 
 -- ----------------------------
+-- Table structure for lnzm_branchapperance
+-- ----------------------------
+DROP TABLE IF EXISTS `lnzm_branchapperance`;
+CREATE TABLE `lnzm_branchapperance` (
+  `branchApperanceId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `branchApperanceTitle` varchar(255) NOT NULL DEFAULT '',
+  `branchApperanceInformation` varchar(255) DEFAULT '',
+  `branchApperanceReleaseId` bigint(20) NOT NULL DEFAULT '0',
+  `branchApperanceReleaseDate` datetime DEFAULT NULL,
+  `branchApperanceContentURL` varchar(255) NOT NULL DEFAULT '',
+  `branchApperancePageView` bigint(20) NOT NULL DEFAULT '0',
+  `branchApperanceAcademyAuditStatus` bigint(20) NOT NULL DEFAULT '0',
+  `branchApperanceAcademyAuditId` bigint(20) NOT NULL DEFAULT '0',
+  `branchApperanceAcademyAuditDate` datetime DEFAULT NULL,
+  `branchApperanceOrangizationAuditStatus` bigint(20) NOT NULL DEFAULT '0',
+  `branchApperanceOrangizationAuditId` bigint(20) NOT NULL DEFAULT '0',
+  `branchApperanceOrangizationAuditDate` datetime DEFAULT NULL,
+  `branchApperanceType` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`branchApperanceId`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of lnzm_branchapperance
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for lnzm_download
 -- ----------------------------
 DROP TABLE IF EXISTS `lnzm_download`;
@@ -95,7 +123,7 @@ CREATE TABLE `lnzm_download` (
   `downloadPageView` bigint(20) unsigned NOT NULL DEFAULT '0',
   `fileName` varchar(255) DEFAULT '',
   PRIMARY KEY (`downloadId`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of lnzm_download
@@ -106,6 +134,7 @@ INSERT INTO `lnzm_download` VALUES ('9', '1234567', '', '1', '2015-08-04 21:07:3
 INSERT INTO `lnzm_download` VALUES ('10', '12345678', '', '1', '2015-08-04 21:07:40', '55c0b91cc5ac6.PNG', '0', 'IMG_0294.PNG');
 INSERT INTO `lnzm_download` VALUES ('11', '123456789', '', '1', '2015-08-04 21:07:47', '55c0b923956db.JPG', '0', 'IMG_0293.JPG');
 INSERT INTO `lnzm_download` VALUES ('12', '123412', '', '1', '2015-08-04 21:07:55', '55c0bf860e0c8.PNG', '0', 'IMG_0294.PNG');
+INSERT INTO `lnzm_download` VALUES ('13', '12345', '', '1', '2015-08-09 15:57:50', '55c707fe51821.doc', '0', 'JMeter.doc');
 
 -- ----------------------------
 -- Table structure for lnzm_notice
@@ -124,12 +153,20 @@ CREATE TABLE `lnzm_notice` (
   `noticeAuditDate` datetime DEFAULT NULL,
   `noticeType` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`noticeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lnzm_notice
 -- ----------------------------
-INSERT INTO `lnzm_notice` VALUES ('9', '12345', '', '1', '2015-08-08 14:54:44', './Public/contentHtml/143901842023395.html', '0', '1', '1', '2015-08-08 14:54:44', '0');
+INSERT INTO `lnzm_notice` VALUES ('9', '12345', '', '1', '2015-08-08 14:54:44', './Public/contentHtml/14391072629120.html', '0', '1', '1', '2015-08-08 14:54:44', '0');
+INSERT INTO `lnzm_notice` VALUES ('10', '123', '', '1', '2015-08-09 16:01:07', './Public/contentHtml/14391072677001.html', '0', '1', '1', '2015-08-09 16:01:07', '0');
+INSERT INTO `lnzm_notice` VALUES ('11', '1234', '', '1', '2015-08-09 20:21:10', './Public/contentHtml/14391228707706.html', '0', '1', '1', '2015-08-09 20:21:10', '0');
+INSERT INTO `lnzm_notice` VALUES ('12', '12345', '', '1', '2015-08-09 20:21:32', './Public/contentHtml/143912289213348.html', '0', '1', '1', '2015-08-09 20:21:32', '0');
+INSERT INTO `lnzm_notice` VALUES ('13', '124356', '', '1', '2015-08-09 20:22:22', './Public/contentHtml/143912294223437.html', '0', '1', '1', '2015-08-09 20:22:22', '0');
+INSERT INTO `lnzm_notice` VALUES ('14', '3573456', '', '1', '2015-08-09 20:23:16', './Public/contentHtml/14391229968514.html', '0', '1', '1', '2015-08-09 20:23:16', '0');
+INSERT INTO `lnzm_notice` VALUES ('15', '123464567', '', '1', '2015-08-09 20:24:29', './Public/contentHtml/143912306922165.html', '0', '1', '1', '2015-08-09 20:24:29', '0');
+INSERT INTO `lnzm_notice` VALUES ('16', '中文Test', '', '1', '2015-08-09 20:26:02', './Public/contentHtml/1439123162912.html', '0', '1', '1', '2015-08-09 20:26:02', '0');
+INSERT INTO `lnzm_notice` VALUES ('17', '中文测试', '', '1', '2015-08-09 20:26:51', './Public/contentHtml/143912321123098.html', '0', '1', '1', '2015-08-09 20:26:51', '0');
 
 -- ----------------------------
 -- Table structure for lnzm_user
@@ -173,7 +210,7 @@ CREATE TABLE `lnzm_worktendency` (
   `workTendencyContentURL` varchar(255) NOT NULL DEFAULT '',
   `workTendencyPageView` bigint(20) DEFAULT '0',
   PRIMARY KEY (`workTendencyId`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lnzm_worktendency
@@ -199,4 +236,5 @@ INSERT INTO `lnzm_worktendency` VALUES ('32', '测试18', '', '1', '2015-07-31 1
 INSERT INTO `lnzm_worktendency` VALUES ('33', '测试19', '', '1', '2015-07-31 15:51:18', './Public/contentHtml/14383290781781977939.html', '0');
 INSERT INTO `lnzm_worktendency` VALUES ('34', '测试20', '', '1', '2015-07-31 15:51:31', './Public/contentHtml/1438329091865930050.html', '0');
 INSERT INTO `lnzm_worktendency` VALUES ('35', '测试21', '', '1', '2015-08-06 01:23:20', './Public/contentHtml/14387954006458.html', '0');
-INSERT INTO `lnzm_worktendency` VALUES ('36', '1234567', '', '1', '2015-08-08 10:56:19', './Public/contentHtml/143900274627079.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('36', '1234567', '', '1', '2015-08-08 10:56:19', './Public/contentHtml/143910795729470.html', '0');
+INSERT INTO `lnzm_worktendency` VALUES ('37', '12345678', '', '1', '2015-08-09 16:12:45', './Public/contentHtml/143910796522527.html', '0');

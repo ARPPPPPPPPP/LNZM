@@ -2,6 +2,12 @@
 namespace Admin\Controller;
 use Think\Controller;
 class TestController extends Controller {
+	public function test(){
+		$fp = fopen("E:\\PhpTimedTask\\test.txt", "a+");
+		fwrite($fp, date("Y-m-d H:i:s") . "successed \n");
+		fclose($fp);
+	}
+	
     public function testForm(){
     		try {
 			$download = M ( 'download' );

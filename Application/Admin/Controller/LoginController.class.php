@@ -58,6 +58,7 @@ class LoginController extends Controller {
 	public function logout() {
 		doLog(0,10,'Logout_account_:_' . $_SESSION['userAccount']);
 		session ( 'userAccount', null );
+		session ( 'userId', null );
 		
 		$this->success ( '退出成功', 'login' );
 	}

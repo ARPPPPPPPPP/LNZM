@@ -3,7 +3,7 @@
     width:730px;
     height: 3000px;
     margin-bottom: 25px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     background: url(../img/introduction_bg.png) no-repeat;
 }
 .right_col_title{
@@ -22,7 +22,7 @@
 .right_col_content span{
     height: 30px;
     line-height: 30px;
-    color:#393636;
+    color:#3B3636;
 }
 
 .intro_head{

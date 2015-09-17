@@ -1,0 +1,22 @@
+#content{
+    margin:25px auto;
+    height:500px;
+    text-align: center;
+}
+#content h1{
+    color:#DE310E;
+    font-weight: 500;
+}
+#content img{
+    margin-top:100px ;
+}
+.head{
+    height: 50px;
+    width: 100%;
+    background: url(../img/content_bg.png) no-repeat ;
+}
+.wrap{
+    height:450px;
+    background-color: #F8F8F8;
+    padding-top: 50px;
+}

@@ -1,0 +1,36 @@
+<div class="left_col left">
+    <div class="left_col_title">
+        在这里感悟爱国
+    </div>
+    <div class="left_col_items">
+        <ul>
+            <!--序-->
+           <if condition="$index eq 1">
+               <li class="active"><a href="{:U('Patriotic/preface')}">序</a></li>
+           <else />
+               <li><a href="{:U('Patriotic/preface')}">序</a></li>
+           </if>
+            <!--位置分布图-->
+            <if condition="$index eq 2">
+                <li class="active"><a href="{:U('Patriotic/location')}">位置分布图</a></li>
+                <else />
+                <li><a href="{:U('Patriotic/location')}">位置分布图</a></li>
+            </if>
+            <!--推荐参观时间-->
+            <if condition="$index eq 3">
+                <li class="active"><a href="{:U('Patriotic/schedule')}">推荐参观时间</a></li>
+                <else />
+                <li><a href="{:U('Patriotic/schedule')}">推荐参观时间</a></li>
+            </if>
+            <!--专家导读-->
+            <if condition="$index eq 4">
+                <li class="active"><a href="{:U('Patriotic/introduction')}">专家导读</a></li>
+                <else />
+                <li><a href="{:U('Patriotic/introduction')}">专家导读</a></li>
+            </if>
+            <!--目录-->
+            <li><a href="{:U('Patriotic/fullText','page=1')}">目录</a></li>
+
+        </ul>
+    </div>
+</div>

@@ -40,7 +40,6 @@
 
 }
 .item_l{
-
     height: 30px;
     line-height: 30px;
     text-indent: 2px;
@@ -51,7 +50,8 @@
     height: 20px;
     line-height: 20px;
     font-size: 12px;
-    text-align: center;
+    text-align: left;
+    text-indent:48px;
 }
 /*文章区*/
 .articles{

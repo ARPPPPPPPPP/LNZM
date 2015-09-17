@@ -10,7 +10,8 @@
 .left_col{
     width: 200px;
     height:400px;
-    text-align: center;
+    text-align: left;
+    text-indent: 50px;
     background: url(../img/left_col.png) no-repeat 0 50px;
 
 }
@@ -48,7 +49,7 @@
     color:#FFFFFF;
 }
 .left_col_items .active{
-    background: url(../img/q.gif) no-repeat 50px 13px;
+    background: url(../img/q.gif) no-repeat 40px 14px;
 }
 .left_col_items .active a{
     color:red;

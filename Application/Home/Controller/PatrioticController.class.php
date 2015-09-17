@@ -12,12 +12,28 @@ use Think\Controller;
 class PatrioticController extends  Controller{
 
     //序
-    function preface(){
+   public function preface(){
+        $this->assign("index",1);
+        $this->display();
+    }
+    //位置分布图
+    public function location(){
+        $this->assign("index",2);
+        $this->display();
+    }
+    //推荐参观时间
+    public function schedule(){
+        $this->assign("index",3);
+        $this->display();
+    }
+    //专家导读
+    public function introduction(){
+        $this->assign("index",4);
         $this->display();
     }
 
-    //在广东
-    function fullText(){
+    //目录
+    public function fullText(){
         $page=1;
         if(isset($_GET['page'])){
             $page=$_GET['page'];
@@ -35,8 +51,5 @@ class PatrioticController extends  Controller{
         $this->display();
     }
 
-    //专家导读
-    function introduction(){
-        $this->display();
-    }
+
 }

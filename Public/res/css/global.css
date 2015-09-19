@@ -49,7 +49,7 @@ img{
 
 /*头部*/
 #header{
-    height: 110px;
+    height: 200px;
     overflow: hidden;
     background: url(../img/top.png) no-repeat;
 }
@@ -58,7 +58,7 @@ img{
     height: 95px;
 }
 #link{
-    margin-top:80px;
+    margin-top:170px;
     line-height: 35px;
 }
 #link a{
@@ -91,14 +91,14 @@ img{
 }
 
 #nav a{
-    color: #DE310E;
+    color: #FFFFFF;
     display: block;
     width: 120px;
     height: 100%;
 }
 #nav a:hover{
     cursor: pointer;
-    color:#FFFFFF;
+    color:#DE310E;
     background-color: #F14700;
 }
 

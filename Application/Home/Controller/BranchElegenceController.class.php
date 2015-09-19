@@ -33,6 +33,11 @@ class BranchElegenceController extends Controller{
 //                }
 //            }
 //        }
+        //设置默认
+//        $nameOfacademy=$academy->order('academyid asc')->limit(1)->find();
+//        if(isset($_GET['branchapperanceacademy'])){
+//            $nameOfacademy=$_GET['branchapperanceacademy'];
+//        }
         //支部分页
         $countAcademy=$academy->count()-1;
         $pageAcademy = new \Think\Page ( $countAcademy, 8, 'p1' );

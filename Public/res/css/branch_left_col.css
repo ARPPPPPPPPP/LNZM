@@ -45,7 +45,7 @@
     color:#FFFFFF;
 }
 .left_col_items .active{
-    background: url(../img/q.gif) no-repeat 20px 14px;
+    background: url(../img/q.gif) no-repeat 14px 14px;
 }
 .left_col_items .active a{
     color:red;

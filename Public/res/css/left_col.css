@@ -10,10 +10,8 @@
 .left_col{
     width: 200px;
     height:400px;
-    text-align: left;
-    text-indent: 50px;
+    text-align: center;
     background: url(../img/left_col.png) no-repeat 0 50px;
-
 }
 .left_col_title{
     width: 100%;
@@ -30,6 +28,9 @@
     font-size:18px;
     height:350px;
     overflow: hidden;
+    text-align: left;
+    text-indent: 60px;
+
 }
 
 .left_col_items ul{
@@ -41,16 +42,16 @@
     display: block;
     height:35px;
     line-height: 35px;
-
+    background: url(../img/tag.png) no-repeat 20px 3px;
 }
+
+
 .left_col_items ul a:hover{
     cursor: pointer;
     background-color: #C5130A;
     color:#FFFFFF;
 }
-.left_col_items .active{
-    background: url(../img/q.gif) no-repeat 40px 14px;
-}
+
 .left_col_items .active a{
-    color:red;
+    color:#DE310E;
 }

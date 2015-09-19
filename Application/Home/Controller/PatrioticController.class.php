@@ -41,7 +41,7 @@ class PatrioticController extends  Controller{
         $next=$page+1;
         $pre=$page-1;
 
-        $src="/LNZM/PUBLIC/res/articles/".$page.".png";
+        $src="/LNZM/Public/res/articles/".$page.".png";
 //        dump($src);
 //        return;
         $this->assign("page",$page);  //当前页

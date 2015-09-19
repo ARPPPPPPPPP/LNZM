@@ -34,17 +34,25 @@ class BranchElegenceController extends Controller{
 //            }
 //        }
         //设置默认
-//        $nameOfacademy=$academy->order('academyid asc')->limit(1)->find();
-//        if(isset($_GET['branchapperanceacademy'])){
-//            $nameOfacademy=$_GET['branchapperanceacademy'];
-//        }
+
+        $nameOfacademy='';
+        if(isset($_GET['branchapperanceacademy'])){
+            $nameOfacademy=$_GET['branchapperanceacademy'];
+        }else{
+            $defaultacademy=$academy->order('academyRank desc')->limit(1)->select();
+            $nameOfacademy=$defaultacademy[0]['academyname'];
+//            dump($nameOfacademy);
+//            return;
+        }
+//        dump($nameOfacademy);
+//        return;
         //支部分页
         $countAcademy=$academy->count()-1;
         $pageAcademy = new \Think\Page ( $countAcademy, 8, 'p1' );
         $pageAcademy->setP('p1');
-        $listAcademy = $academy->where('academyName<>"' . $_GET['branchapperanceacademy'].'"')->order ( 'academyid asc' )->limit ( $pageAcademy->firstRow . ',' . $pageAcademy->listRows)->select ();
+        $listAcademy = $academy->where('academyName<>"' .$nameOfacademy.'"')->order ( 'academyRank desc' )->limit ( $pageAcademy->firstRow . ',' . $pageAcademy->listRows)->select ();
         if(strcmp ( $_GET ['p1'], "2" ) != 0){
-            $currentAcademy=$academy->where('academyName="' . $_GET['branchapperanceacademy'].'"')->select();
+            $currentAcademy=$academy->where('academyName="' . $nameOfacademy.'"')->select();
             $this->assign('currentAcademy',$currentAcademy); //选中的学院
         }
 
@@ -53,14 +61,14 @@ class BranchElegenceController extends Controller{
 
 
         //支部风采分页
-        $countApperance=$apperance->where('branchApperanceAcademy="' . $_GET['branchapperanceacademy'].'" and branchapperanceacademyauditstatus=1')->count();
+        $countApperance=$apperance->where('branchApperanceAcademy="' . $nameOfacademy.'" and branchapperanceacademyauditstatus=1')->count();
         $pageApperance= new \Think\Page ( $countApperance, 10, 'p2' );
         $pageApperance->setP('p2');
-        $listApperance = $apperance->where('branchApperanceAcademy="' . $_GET['branchapperanceacademy'].'" and branchapperanceacademyauditstatus=1')->order ( 'branchApperanceid desc' )->limit ( $pageApperance->firstRow . ',' . $pageApperance->listRows )->select ();
+        $listApperance = $apperance->where('branchApperanceAcademy="' . $nameOfacademy.'" and branchapperanceacademyauditstatus=1')->order ( 'branchApperanceid desc' )->limit ( $pageApperance->firstRow . ',' . $pageApperance->listRows )->select ();
 
         $this->assign('listApperance',$listApperance);  //赋值数据集
         $this->assign('pageApperance',$pageApperance->show()); //赋值分页输出
-        $this->assign('title',$_GET['branchapperanceacademy']); //标题
+        $this->assign('title',$nameOfacademy); //标题
 
         $this->display();
     }

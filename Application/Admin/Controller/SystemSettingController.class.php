@@ -59,7 +59,7 @@ class SystemSettingController extends Controller {
 		$countAcademy = $academy->count ();
 		$pageAcademy = new \Think\Page ( $countAcademy, C ( 'PAGE_COUNT' ), 'p1' );
 		$pageAcademy->setP ( 'p1' );
-		$orderbyAcademy ['academyid'] = 'desc';
+		$orderbyAcademy ['academyrank'] = 'desc';
 		$listAcademy = $academy->order ( $orderbyAcademy )->limit ( $pageAcademy->firstRow . ',' . $pageAcademy->listRows )->select ();
 		$listAllAcademy = $academy->select ();
 		$this->assign ( 'listAcademy', $listAcademy ); // 赋值数据集
@@ -102,7 +102,7 @@ class SystemSettingController extends Controller {
 		
 		$data ['academyName'] = $_POST ['academyName'];
 		$data ['academyDescription'] = $_POST ['academyDescription'];
-		
+		$data ['academyRank'] = $_POST ['academyRank'];
 		$academy->create ( $data );
 		$addAcademyId = $academy->add ();
 		if ($addAcademyId) {
@@ -142,7 +142,7 @@ class SystemSettingController extends Controller {
 		$data ['academyId'] = $_GET ['academyid'];
 		$data ['academyName'] = $_POST ['academyname'];
 		$data ['academyDescription'] = $_POST ['academydescription'];
-		
+		$data ['academyRank'] = $_POST ['academyrank'];
 		// dump($data);
 		// return;
 		$result = $academy->save ( $data );

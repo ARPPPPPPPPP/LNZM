@@ -53,6 +53,7 @@
 									<th><input class="check-all" type="checkbox" /></th>
 									<th>学院名称</th>
 									<th>学院描述</th>
+									<th>排序</th>
 									<th>操作</th>
 								</tr>
 							</thead>
@@ -74,6 +75,7 @@
 										id='{$itemAcademy[academyid]}' /></td>
 									<td>{$itemAcademy[academyname]}</td>
 									<td>{$itemAcademy[academydescription]}</td>
+									<td>{$itemAcademy[academyrank]}</td>
 									<td><a
 										href="{:U('SystemSetting/editAcademy','academyid=' . $itemAcademy[academyid])}"
 										title="Edit" target="_blank"><img
@@ -103,6 +105,11 @@
 									<label>学院描述</label> <input
 										class="text-input medium-input datepicker" type="text"
 										id="medium-input" name="academyDescription" /> <br />
+								</p>
+								<p>
+									<label>学院排序(学院在系统中按照此项进行降序排序)</label> <input
+										class="text-input medium-input datepicker" type="text"
+										id="medium-input" name="academyRank" /> <br />
 								</p>
 								<p>
 									<input class="button" type="submit" value="确定" />

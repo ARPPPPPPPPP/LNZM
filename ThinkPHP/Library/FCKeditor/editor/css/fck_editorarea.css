@@ -40,7 +40,8 @@ body
 
 body, td
 {
-	font-family: Arial, Verdana, sans-serif;
+	/*font-family: Arial, Verdana, sans-serif;*/
+	font-family:宋体, 黑体, 幼圆, 楷体, 仿宋, Arial, Verdana, sans-serif;
 	font-size: 12px;
 }
 

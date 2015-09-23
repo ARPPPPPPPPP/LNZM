@@ -11,13 +11,17 @@ use Think\Controller;
 class FollowController extends  Controller{
 
     //关注微博
-    function followWeibo(){
+    public function followWeibo(){
         $this->display();
     }
 
     //关注微信
-    function  followWeixin(){
+    public function  followWeixin(){
         $this->display();
     }
 
+    //联系我们
+    public function contactus(){
+        $this->display();
+    }
 }

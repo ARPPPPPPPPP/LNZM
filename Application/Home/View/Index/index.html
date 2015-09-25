@@ -43,7 +43,7 @@
 	<div id="area-1" class="left">
 		<div class="area left">
 			<div class="info_title">
-				<b class="left">工作动态</b>
+				<b class="left">行为实践</b>
 				<a href="{:U('WorkTendency/showList')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
@@ -73,33 +73,27 @@
 		</div>
 		<div class="area left">
 			<div class="info_title">
-				<b class="left">活动实践</b>
+				<b class="left">系列读本</b>
 				<a href="{:U('PracticalActivities/socialPractice')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
 				<ul>
-					<foreach name="listActivity" item="item">
-						<li>
-							<a href="{:U('PracticalActivities/showContent','activitypracticeid=' . $item[activitypracticeid])}">
-								<if condition="$item[activitypracticetype] eq 0">【社会实践】
-									<else />【志愿服务】
-								</if>
-								{$item[activitypracticetitle]}
-							</a>
-						</li>
-					</foreach>
+					<li><a href="{:U('Patriotic/preface')}">【专题】在这里感悟爱国</a></li>
+					<li><a href="{:U('Innovation/index')}">【专题】在这里领悟创新</a></li>
+					<li><a href="{:U('Properity/index')}">【专题】在这里追求富强</a></li>
+					<li><a href="{:U('Responsibility/index')}">【专题】在这里勇于担当</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="area left">
 			<div class="info_title">
-				<b class="left">支部风采</b>
+				<b class="left">下载专区</b>
 				<a href="{:U('BranchElegence/showlist','branchapperanceacademy')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
 				<ul>
-					<foreach name="listApperance" item="item">
-						<li><a href="{:U('BranchElegence/showContent','branchapperanceid=' . $item[branchapperanceid])}">【{$item[branchapperancebranch]}】{$item[branchapperancetitle]}</a></li>
+					<foreach name="listDownload" item="item">
+						<a href="__PUBLIC__/Download/{$item[downloadreleasedate]|substr=0,10}/{$item[downloadurl]}">{$item[filename]}</a>
 					</foreach>
 				</ul>
 			</div>

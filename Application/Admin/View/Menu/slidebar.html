@@ -12,14 +12,13 @@
 			title="Sign Out">登出</a>
 	</div>
 	<ul id="main-nav">
-	<li><a href="{:U('Login/home')}"<if
-					condition="$CURRENT_MENU eq 'HOME'">
-				class="nav-top-item no-submenu current" <else />
-				class="nav-top-item no-submenu" </if>>首页</a></li>
+		<li><a href="{:U('Login/home')}"<if
+					condition="$CURRENT_MENU eq 'HOME'"> class="nav-top-item
+				no-submenu current" <else /> class="nav-top-item no-submenu" </if>>首页</a></li>
 		<li><a href="{:U('WorkTendency/allPage')}"<if
 					condition="$CURRENT_MENU eq 'WORKTENDENCY'">
 				class="nav-top-item no-submenu current" <else />
-				class="nav-top-item no-submenu" </if>>工作动态</a></li>
+				class="nav-top-item no-submenu" </if>>实践行动</a></li>
 		<!-- 
 		<li><a href="#"<if condition="$CURRENT_MENU eq '专题建设'">
 				class="nav-top-item no-submenu current" <else />
@@ -31,6 +30,7 @@
 				<li><a href="#">在这里勇于担当</a></li>
 			</ul></li>
 			 -->
+
 		<li><a href="#"<if
 					condition="($CURRENT_MENU eq 'NOTICE') OR ($CURRENT_MENU eq 'NOTICEORANGIZATIONAUDIT')">
 				class="nav-top-item no-submenu current" <else />
@@ -39,10 +39,13 @@
 				<li><a href="{:U('Notice/allNotice')}"<if
 							condition="$CURRENT_MENU eq 'NOTICE'"> class="current" <else />
 						class="" </if>>所有通知公告</a></li>
+				<!-- 
 				<li><a href="#"<if
 							condition="$CURRENT_MENU eq 'NOTICEORANGIZATIONAUDIT'">
 						class="current" <else /> class="" </if>>审核通知公告</a></li>
+			 -->
 			</ul></li>
+		<!-- 
 		<li><a href="{:U('ActivityPractice/allActivityPractice')}"<if
 					condition="$CURRENT_MENU eq 'ACTIVITYPRACTICE'">
 				class="nav-top-item no-submenu current" <else />
@@ -51,6 +54,7 @@
 					condition="$CURRENT_MENU eq 'BRANCHAPPERANCE'">
 				class="nav-top-item no-submenu current" <else />
 				class="nav-top-item no-submenu" </if>>支部风采</a></li>
+				 -->
 		<li><a href="{:U('Download/allDownload')}"<if
 					condition="$CURRENT_MENU eq 'DOWNLAODSETTING'">
 				class="nav-top-item no-submenu current" <else />

@@ -93,6 +93,16 @@
     text-decoration: underline;
     color:#ed1941;
 }
+.info_body .book a{
+    background: url(../img/tag.png) 4px 0 no-repeat;
+    text-indent: 35px;
+    height:30px;
+    line-height: 30px;
+}
+.info_body .download a{
+    background: url(../img/download.ico) 0 -5px no-repeat;
+    text-indent: 35px;
+}
 #area-2{
     width:320px;
     height:458px;

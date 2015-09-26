@@ -74,10 +74,10 @@
 		<div class="area left">
 			<div class="info_title">
 				<b class="left">系列读本</b>
-				<a href="{:U('PracticalActivities/socialPractice')}"><span class="right">更多>></span></a>
+				<!--<a href="{:U('PracticalActivities/socialPractice')}"><span class="right">更多>></span></a>-->
 			</div>
 			<div class="info_body">
-				<ul>
+				<ul class="book">
 					<li><a href="{:U('Patriotic/preface')}">【专题】在这里感悟爱国</a></li>
 					<li><a href="{:U('Innovation/index')}">【专题】在这里领悟创新</a></li>
 					<li><a href="{:U('Properity/index')}">【专题】在这里追求富强</a></li>
@@ -88,10 +88,10 @@
 		<div class="area left">
 			<div class="info_title">
 				<b class="left">下载专区</b>
-				<a href="{:U('BranchElegence/showlist','branchapperanceacademy')}"><span class="right">更多>></span></a>
+				<a href="{:U('Download/download')}"><span class="right">更多>></span></a>
 			</div>
 			<div class="info_body">
-				<ul>
+				<ul class="download">
 					<foreach name="listDownload" item="item">
 						<a href="__PUBLIC__/Download/{$item[downloadreleasedate]|substr=0,10}/{$item[downloadurl]}">{$item[filename]}</a>
 					</foreach>
@@ -103,25 +103,25 @@
 	<!--右边模块-->
 	<div id="area-2" class="right">
 		<div class="small_bar_pic">
-			<a href="">
-				<img src="__PUBLIC__/res//img/b_visitor.png" alt=""/>
+			<a href="http://theory.people.com.cn/GB/40557/120709/index.html">
+				<img src="__PUBLIC__/res//img/b_value.png" alt=""/>
 				<div class="bar">
-					访问量统计
+					社会主义价值观
 				</div>
 			</a>
-			<a href="#">
-				<img src="__PUBLIC__/res//img/b_rank.png" alt=""/>
+			<a href="http://zgm.12371.cn/special/">
+				<img src="__PUBLIC__/res//img/b_dream.png" alt=""/>
 				<div class="bar">
-					支部足迹
+					共筑中国梦
 				</div>
 			</a>
 		</div>
 		<div class="small_block_pic">
 			<div class="left" style="width: 146px;margin-left:10px;">
 				<a href="{:U('Follow/followWeibo')}">
-					<img  src="__PUBLIC__/res//img/b_blog.png" alt="微博关注"/>
+					<img  src="__PUBLIC__/res//img/b_rank.png" alt="排行榜"/>
 					<div class="bar">
-						微博关注
+						app排行榜
 					</div>
 				</a>
 				<a href="{:U('Download/app')}">

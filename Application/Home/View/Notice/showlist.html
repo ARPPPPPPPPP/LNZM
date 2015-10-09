@@ -20,7 +20,10 @@
     <div class="list_body">
         <ul>
             <foreach name="list" item="item">
-                <a href="{:U('Notice/showContent','noticeid=' . $item[noticeid])}">{$item[noticetitle]}</a>
+                <a href="{:U('Notice/showContent','noticeid=' . $item[noticeid])}">
+                   <span>{$item[noticetitle]}</span>
+                    <span class="time">【{$item[noticereleasedate]}】</span>
+                </a>
             </foreach>
         </ul>
     </div>

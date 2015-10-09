@@ -1,3 +1,32 @@
 #content{
     margin:25px auto;
+    font-family: "宋体";
+}
+.head{
+    height: 50px;
+    width: 100%;
+    background: url(../img/content_bg.png) no-repeat ;
+}
+.wrap{
+    background-color: #F8F8F8;
+}
+.title{
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    background: url(../img/title.png) no-repeat 50px -5px;
+}
+.title h1{
+    font-weight:600;
+    height: 35px;
+    line-height: 35px;
+}
+.article{
+    width: 800px;
+    margin: 25px auto;
+}
+.article p{
+    font-size: 16px;
+    line-height: 30px;
+    text-indent: 2em;
 }

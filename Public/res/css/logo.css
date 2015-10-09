@@ -1,13 +1,8 @@
 #content{
     margin:25px auto;
-    height:450px;
 }
 
-#content img{
-    height:188px;
-    width: 155px;
-    float: left;
-}
+
 .head{
     height: 50px;
     width: 100%;
@@ -16,21 +11,24 @@
 .wrap{
     height:350px;
     background-color: #F8F8F8;
-    text-indent: 2em;
-    font-family: "ËÎÌו";
-    padding-left: 120px;
-    padding-right: 120px;
-}
-.detail h2{
-    width: 100%;
-    line-height: 30px;
-}
-.detail p{
-    width: 100%;
-    font-size: 14px;
-    line-height: 28px;
 }
 .detail{
-    width: 450px;
-    margin-left: 200px;
+    width: 700px;
+    margin: 0 auto;
 }
+h2{
+    height:50px;
+    line-height: 50px;
+    border-bottom: 1px solid #949BB1;
+    text-indent: 2em;
+}
+small{
+    color:#949BB1;
+    font-size: 14px;
+}
+.detail img{
+    display: block;
+    margin: 50px auto;
+}
+
+

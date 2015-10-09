@@ -61,8 +61,11 @@
 }
 .article_title{
     height:105px;
-
-
+}
+.title h2{
+    font-family: "宋体";
+    font-size:25px;
+    color:red;
 }
 .back{
     height: 35px;

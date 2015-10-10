@@ -16,10 +16,10 @@
 .detail{
     width: 700px;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     padding-top: 50px;
 }
 .detail p{
-    font-size: 15px;
+    font-size: 35px;
     line-height: 35px;
 }
